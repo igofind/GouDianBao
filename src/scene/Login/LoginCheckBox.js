@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { View, StyleSheet, TouchableHighlight, Text } from 'react-native';
 // import Icon from 'react-native-vector-icons/Ionicons';
 import Icon from 'react-native-vector-icons/MaterialIcons';
@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
     },
 });
 
-class LoginCheckBox extends Component {
+class LoginCheckBox extends PureComponent {
 
     constructor(props) {
         super(props);

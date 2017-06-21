@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { Text, TouchableOpacity, View, StyleSheet } from 'react-native';
 import theme from '../../style/theme';
 
@@ -22,10 +22,10 @@ const styles = StyleSheet.create({
     },
 });
 
-class LoginButton extends Component {
+class LoginButton extends PureComponent {
     render() {
         return (
-            <TouchableOpacity activeOpacity={0.8}>
+            <TouchableOpacity activeOpacity={0.8} onPress={this.props.onPress}>
                 <View style={[styles.button, this.props.btnStyle]}>
                     <Text style={[styles.text, this.props.textStyle]}>{this.props.title}</Text>
                 </View>

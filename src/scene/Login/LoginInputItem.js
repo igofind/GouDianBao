@@ -1,6 +1,7 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { TextInput, View, StyleSheet } from 'react-native';
-import Icon from 'react-native-vector-icons/SimpleLineIcons';
+import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import screen from '../../common/screen';
 import theme from '../../style/theme';
 
@@ -30,7 +31,7 @@ const styles = StyleSheet.create({
     },
 });
 
-class LoginInputItem extends Component {
+class LoginInputItem extends PureComponent {
     constructor() {
         super();
         this.state = {
@@ -50,14 +51,32 @@ class LoginInputItem extends Component {
         });
     }
 
-    render() {
-        return (
-            <View style={styles.container} >
-                <Icon
+    renderIcon() {
+        let icon = null;
+        switch (this.props.type) {
+            case 'account':
+                icon = (<FontAwesome
                     name={this.props.name}
                     size={18}
                     style={[styles.icon, this.state.isFocused && styles.focus]}
-                />
+                />);
+                break;
+            case 'passwd':
+                icon = (<SimpleLineIcons
+                    name={this.props.name}
+                    size={18}
+                    style={[styles.icon, this.state.isFocused && styles.focus]}
+                />);
+                break;
+            default:break;
+        }
+        return icon;
+    }
+
+    render() {
+        return (
+            <View style={styles.container} >
+                {this.renderIcon()}
                 <TextInput
                     style={[styles.input]}
                     keyboardType={this.props.keyboardType}

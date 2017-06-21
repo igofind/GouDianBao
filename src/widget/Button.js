@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { Text, TouchableOpacity, View } from 'react-native';
 
-class Button extends Component {
+class Button extends PureComponent {
     render() {
         return (
             <TouchableOpacity activeOpacity={0.8}>

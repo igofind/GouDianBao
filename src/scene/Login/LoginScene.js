@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { Image, View, StyleSheet, StatusBar } from 'react-native';
 import InputItem from './LoginInputItem';
 import LoginButton from './LoginButton';
@@ -26,7 +26,13 @@ const styles = StyleSheet.create({
     },
 });
 
-class LoginScene extends Component {
+class LoginScene extends PureComponent {
+
+    doLogin() {
+        const { navigate } = this.props.navigation;
+        navigate('Main');
+    }
+
     render() {
         return (
             <View style={styles.body}>
@@ -35,15 +41,15 @@ class LoginScene extends Component {
                     backgroundColor="#fff"
                     barStyle="dark-content"
                     networkActivityIndicatorVisible={true}
-                    translucent={true}
+                    translucent={false}
                 />
                 <View style={styles.logoContainer} >
                     <Image source={require('../../image/login_logo.png')} style={styles.image} />
                 </View>
-                <InputItem name="user" placeholder="请输入登录账号" keyboardType="email-address" />
-                <InputItem name="lock" placeholder="请输入登录密码" secureTextEntry={true} />
+                <InputItem name="user-o" type="account" placeholder="请输入登录账号" keyboardType="email-address" />
+                <InputItem name="lock" type="passwd" placeholder="请输入登录密码" secureTextEntry={true} />
                 <LoginCheckBox onChange={() => {}} />
-                <LoginButton title="登录" btnStyle={styles.loginBtn} />
+                <LoginButton title="登录" btnStyle={styles.loginBtn} onPress={() => this.doLogin()} />
             </View>
         );
     }

@@ -1,9 +1,8 @@
-import React, { Component } from 'react';
-import { View } from 'react-native';
+import React, { PureComponent } from 'react';
 import SplashScreen from 'react-native-splash-screen';
-import LoginScene from './scene/Login/LoginScene';
+import StackScenes from './scene/Scenes';
 
-class Test extends Component {
+class Test extends PureComponent {
 
     componentDidMount() {
         // do stuff while splash screen is shown
@@ -12,7 +11,7 @@ class Test extends Component {
     }
 
     render() {
-        return <LoginScene />;
+        return <StackScenes />;
     }
 }
 
