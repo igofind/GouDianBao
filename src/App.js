@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { Text, View } from 'react-native';
-import ScrollTabView from 'react-native-scrollable-tab-view';
+import { View } from 'react-native';
 import SplashScreen from 'react-native-splash-screen';
+import LoginScene from './scene/Login/LoginScene';
 
 class Test extends Component {
 
@@ -12,16 +12,7 @@ class Test extends Component {
     }
 
     render() {
-        return (
-            <ScrollTabView>
-                <View tabLabel="Tab1">
-                    <Text>Tab1</Text>
-                </View>
-                <View tabLabel="Tab2">
-                    <Text>Tab1</Text>
-                </View>
-            </ScrollTabView>
-        );
+        return <LoginScene />;
     }
 }
 
