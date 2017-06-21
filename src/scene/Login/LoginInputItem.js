@@ -60,6 +60,7 @@ class LoginInputItem extends Component {
                 />
                 <TextInput
                     style={[styles.input]}
+                    keyboardType={this.props.keyboardType}
                     underlineColorAndroid="transparent"
                     placeholder={this.props.placeholder}
                     placeholderTextColor="#dbdbdb"
