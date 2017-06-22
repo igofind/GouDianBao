@@ -9,6 +9,7 @@ import CalcScene from './Calc/CalcScene';
 import HomoScene from './Home/HomeScene';
 import LoginScene from './Login/LoginScene';
 import MineScene from './Mine/MineScene';
+import Announcement from '../page/Announcement';
 
 const TabScenes = TabNavigator({
     Home: {
@@ -19,6 +20,8 @@ const TabScenes = TabNavigator({
             headerTitleStyle: theme.styles.homeHeaderTitleStyle,
             tabBarLabel: '首页',
             tabBarIcon: ({ tintColor }) => (<SimpleLineIcons name="home" size={theme.tabIconSize} color={tintColor} />),
+            headerLeft: null,
+            headerRight: null,
         },
     },
     Business: {
@@ -29,6 +32,8 @@ const TabScenes = TabNavigator({
             headerTitleStyle: theme.styles.businessHeaderTitleStyle,
             tabBarLabel: '业务办理',
             tabBarIcon: ({ tintColor }) => (<FontAwesome name="gavel" size={theme.tabIconSize} color={tintColor} />),
+            headerLeft: null,
+            headerRight: null,
         },
     },
     Calc: {
@@ -44,7 +49,7 @@ const TabScenes = TabNavigator({
             headerLeft: (<View style={theme.styles.headerLeftIconView} />),
             headerRight: (
                 <View style={theme.styles.headerRightIconView}>
-                    <FontAwesome name="bell" size={theme.titleIconSize} color="#fff" />
+                    <FontAwesome name="bell" size={theme.headerIconSize} color="#fff" />
                 </View>
             ),
         },
@@ -57,6 +62,8 @@ const TabScenes = TabNavigator({
             headerTitleStyle: theme.styles.mineHeaderTitleStyle,
             tabBarLabel: '我的',
             tabBarIcon: ({ tintColor }) => (<FontAwesome name="user-o" size={theme.tabIconSize} color={tintColor} />),
+            headerLeft: null,
+            headerRight: null,
         },
     },
 }, {
@@ -80,21 +87,25 @@ const TabScenes = TabNavigator({
 });
 
 const StackScenes = StackNavigator({
-    Main: {
-        screen: TabScenes,
-    },
     Login: {
         screen: LoginScene,
         navigationOptions: {
             header: null,
         },
     },
+    Main: {
+        screen: TabScenes,
+    },
+    Announcement: {
+        screen: Announcement,
+    },
+}, {
+    initialRouteName: 'Main',
 });
 
 export default () => (<StackScenes
     onNavigationStateChange={(prevState, currentState, action) => {
         if (action.type.toLowerCase() === 'navigation/navigate') {
-
             // tabNavigator 页面改变时，改变StatusBar
             switch (action.routeName) {
                 case 'Home':
@@ -117,7 +128,6 @@ export default () => (<StackScenes
                     // 与initialRouteName的routeName保持一致
                     // 并在该screen中加上StatusBar组件
                     // StatusBar.setBackgroundColor(theme.calcStatusBarBC, true);
-                    StatusBar.setBackgroundColor(theme.homeStatusBarBC);
                     break;
             }
         }

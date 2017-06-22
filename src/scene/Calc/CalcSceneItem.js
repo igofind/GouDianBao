@@ -1,7 +1,6 @@
-import React, { Component } from 'react';
-import {Image, Text, View, StyleSheet, TouchableOpacity} from 'react-native';
+import React, { PureComponent } from 'react';
+import { Image, Text, View, StyleSheet, TouchableOpacity } from 'react-native';
 import screen from '../../common/screen';
-import TouchableItem from 'react-navigation/src/views/TouchableItem';
 
 const styles = StyleSheet.create({
     container: {
@@ -38,7 +37,7 @@ const styles = StyleSheet.create({
     },
 });
 
-export default class extends Component {
+export default class extends PureComponent {
     render() {
         return (
             <TouchableOpacity activeOpacity={0.8}>

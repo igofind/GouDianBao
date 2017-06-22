@@ -1,10 +1,10 @@
 import React, { PureComponent } from 'react';
-import { View } from 'react-native';
+import HeaderIcon from './HeaderIcon';
 
 export default class extends PureComponent {
     render() {
         return (
-            <View style={[{ height: this.props.styles ? this.props.styles.height : 20 }]} />
+            <HeaderIcon onPress={() => {}} />
         );
     }
 }

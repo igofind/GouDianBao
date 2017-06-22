@@ -19,8 +19,6 @@ const statusBarBC = {
     mineStatusBarBC: '#00aaee',
 };
 
-const titleIconSize = 16;
-
 const styles = StyleSheet.create({
     tabBarStyle: {
         height: 48,
@@ -32,6 +30,15 @@ const styles = StyleSheet.create({
         fontSize: 10,
         marginTop: -4,
         marginBottom: 4,
+    },
+
+    commonHeaderStyle: {
+        ...navHeaderStyle,
+        backgroundColor: '#000',
+    },
+    commonHeaderTitleStyle: {
+        ...headerTitleStyle,
+        color: '#fff',
     },
 
     homeHeaderStyle: {
@@ -76,6 +83,16 @@ const styles = StyleSheet.create({
     headerRightIconView: {
         paddingRight: 12,
     },
+
+    arrowLeftStyle: {
+        // backgroundColor: '#0aa',
+        backgroundColor: '#000',
+        width: 45,
+        height: 45,
+        paddingRight: 3,
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
 });
 
 export default {
@@ -83,8 +100,8 @@ export default {
     marginRight: 12,
     blue: '#00aaee',
     tabIconSize: 22,
+    headerIconSize: 18,
     containerBC: 'auto',
-    titleIconSize,
     styles,
     ...statusBarBC,
 };
