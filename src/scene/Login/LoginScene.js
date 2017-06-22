@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import { Image, View, StyleSheet, StatusBar } from 'react-native';
+import { Image, View, StyleSheet } from 'react-native';
 import InputItem from './LoginInputItem';
 import LoginButton from './LoginButton';
 import LoginCheckBox from './LoginCheckBox';

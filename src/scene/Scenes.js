@@ -1,5 +1,5 @@
 import React from 'react';
-import { StatusBar } from 'react-native';
+import { StatusBar, View } from 'react-native';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import SimpleLineIcons from 'react-native-vector-icons/Octicons';
 import { StackNavigator, TabBarBottom, TabNavigator } from 'react-navigation';
@@ -41,6 +41,12 @@ const TabScenes = TabNavigator({
             tabBarLabel: '辅助计算',
             tabBarIcon: ({ tintColor }) =>
                 (<FontAwesome name="calculator" size={theme.tabIconSize} color={tintColor} />),
+            headerLeft: (<View style={theme.styles.headerLeftIconView} />),
+            headerRight: (
+                <View style={theme.styles.headerRightIconView}>
+                    <FontAwesome name="bell" size={theme.titleIconSize} color="#fff" />
+                </View>
+            ),
         },
     },
     Mine: {
@@ -57,7 +63,7 @@ const TabScenes = TabNavigator({
     tabBarComponent: TabBarBottom,
     tabBarPosition: 'bottom',
     lazy: true,
-    initialRouteName: 'Calc',
+    initialRouteName: 'Home',
     order: ['Home', 'Business', 'Calc', 'Mine'],
     activeBackgroundColor: '#fff',
     backBehavior: 'none',
@@ -88,6 +94,7 @@ const StackScenes = StackNavigator({
 export default () => (<StackScenes
     onNavigationStateChange={(prevState, currentState, action) => {
         if (action.type.toLowerCase() === 'navigation/navigate') {
+
             // tabNavigator 页面改变时，改变StatusBar
             switch (action.routeName) {
                 case 'Home':
@@ -108,7 +115,9 @@ export default () => (<StackScenes
                     break;
                 default:
                     // 与initialRouteName的routeName保持一致
-                    StatusBar.setBackgroundColor(theme.calcStatusBarBC);
+                    // 并在该screen中加上StatusBar组件
+                    // StatusBar.setBackgroundColor(theme.calcStatusBarBC, true);
+                    StatusBar.setBackgroundColor(theme.homeStatusBarBC);
                     break;
             }
         }

@@ -19,6 +19,8 @@ const statusBarBC = {
     mineStatusBarBC: '#00aaee',
 };
 
+const titleIconSize = 16;
+
 const styles = StyleSheet.create({
     tabBarStyle: {
         height: 48,
@@ -67,6 +69,13 @@ const styles = StyleSheet.create({
         ...headerTitleStyle,
         color: '#fff',
     },
+
+    headerLeftIconView: {
+        paddingLeft: 12,
+    },
+    headerRightIconView: {
+        paddingRight: 12,
+    },
 });
 
 export default {
@@ -74,6 +83,8 @@ export default {
     marginRight: 12,
     blue: '#00aaee',
     tabIconSize: 22,
+    containerBC: 'auto',
+    titleIconSize,
     styles,
     ...statusBarBC,
 };
