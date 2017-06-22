@@ -6,13 +6,6 @@ class MineScene extends PureComponent {
     render() {
         return (
             <View>
-                <StatusBar
-                    animated={true}
-                    backgroundColor={theme.blue}
-                    barStyle="light-content"
-                    networkActivityIndicatorVisible={true}
-                    translucent={false}
-                />
                 <Text>This is Home. StatusBar currentHeight is {StatusBar.currentHeight}</Text>
             </View>
         );

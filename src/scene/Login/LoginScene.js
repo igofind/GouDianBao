@@ -36,13 +36,6 @@ class LoginScene extends PureComponent {
     render() {
         return (
             <View style={styles.body}>
-                <StatusBar
-                    animated={true}
-                    backgroundColor="#fff"
-                    barStyle="dark-content"
-                    networkActivityIndicatorVisible={true}
-                    translucent={false}
-                />
                 <View style={styles.logoContainer} >
                     <Image source={require('../../image/login_logo.png')} style={styles.image} />
                 </View>

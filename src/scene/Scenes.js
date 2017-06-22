@@ -1,4 +1,5 @@
 import React from 'react';
+import { StatusBar } from 'react-native';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import SimpleLineIcons from 'react-native-vector-icons/Octicons';
 import { StackNavigator, TabBarBottom, TabNavigator } from 'react-navigation';
@@ -73,25 +74,6 @@ const TabScenes = TabNavigator({
 });
 
 const StackScenes = StackNavigator({
-    /* Main: {
-        screen: () => (<TabScenes
-            onNavigationStateChange={(prevState, currentState) => {
-                const currRoute = currentState.routes[currentState.index];
-                switch (currRoute.routeName) {
-                    case 'Home':
-                        break;
-                    case 'Business':
-                        break;
-                    case 'Calc':
-                        break;
-                    case 'Mine':
-                        break;
-                    default:
-                        break;
-                }
-            }}
-        />),
-    },*/
     Main: {
         screen: TabScenes,
     },
@@ -103,4 +85,32 @@ const StackScenes = StackNavigator({
     },
 });
 
-export default StackScenes;
+export default () => (<StackScenes
+    onNavigationStateChange={(prevState, currentState, action) => {
+        if (action.type.toLowerCase() === 'navigation/navigate') {
+            // tabNavigator 页面改变时，改变StatusBar
+            switch (action.routeName) {
+                case 'Home':
+                    // StatusBar.setBackgroundColor(theme.homeStatusBarBC, true);
+                    StatusBar.setBackgroundColor(theme.homeStatusBarBC);
+                    break;
+                case 'Business':
+                    // StatusBar.setBackgroundColor(theme.businessStatusBarBC, true);
+                    StatusBar.setBackgroundColor(theme.businessStatusBarBC);
+                    break;
+                case 'Calc':
+                    // StatusBar.setBackgroundColor(theme.calcStatusBarBC, true);
+                    StatusBar.setBackgroundColor(theme.calcStatusBarBC);
+                    break;
+                case 'Mine':
+                    // StatusBar.setBackgroundColor(theme.mineStatusBarBC, true);
+                    StatusBar.setBackgroundColor(theme.mineStatusBarBC);
+                    break;
+                default:
+                    // 与initialRouteName的routeName保持一致
+                    StatusBar.setBackgroundColor(theme.calcStatusBarBC);
+                    break;
+            }
+        }
+    }}
+/>);

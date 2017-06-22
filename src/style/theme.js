@@ -12,6 +12,13 @@ const navHeaderStyle = {
     backgroundColor: '#fff',
 };
 
+const statusBarBC = {
+    homeStatusBarBC: '#000',
+    businessStatusBarBC: '#000',
+    calcStatusBarBC: '#000',
+    mineStatusBarBC: '#00aaee',
+};
+
 const styles = StyleSheet.create({
     tabBarStyle: {
         height: 48,
@@ -27,16 +34,20 @@ const styles = StyleSheet.create({
 
     homeHeaderStyle: {
         ...navHeaderStyle,
+        backgroundColor: '#000',
     },
     homeHeaderTitleStyle: {
         ...headerTitleStyle,
+        color: '#fff',
     },
 
     businessHeaderStyle: {
         ...navHeaderStyle,
+        backgroundColor: '#000',
     },
     businessHeaderTitleStyle: {
         ...headerTitleStyle,
+        color: '#fff',
     },
 
     calcHeaderStyle: {
@@ -50,9 +61,11 @@ const styles = StyleSheet.create({
 
     mineHeaderStyle: {
         ...navHeaderStyle,
+        backgroundColor: '#00aaee',
     },
     mineHeaderTitleStyle: {
         ...headerTitleStyle,
+        color: '#fff',
     },
 });
 
@@ -62,4 +75,5 @@ export default {
     blue: '#00aaee',
     tabIconSize: 22,
     styles,
+    ...statusBarBC,
 };

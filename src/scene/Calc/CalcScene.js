@@ -1,6 +1,5 @@
 import React, { PureComponent } from 'react';
-import { StatusBar, Text, View } from 'react-native';
-import AutoUpdateStatusBar from '../../widget/AutoUpdateStatusBar';
+import { Text, View } from 'react-native';
 
 class CalcScene extends PureComponent {
 
@@ -12,12 +11,6 @@ class CalcScene extends PureComponent {
     render() {
         return (
             <View >
-                <AutoUpdateStatusBar
-                    animated={true}
-                    backgroundColor={this.statusBarBc}
-                    networkActivityIndicatorVisible={true}
-                    translucent={false}
-                />
                 <Text>This is Calc.</Text>
             </View>
         );
