@@ -1,22 +1,44 @@
 import React, { PureComponent } from 'react';
-import { Text, StatusBar, View, Button } from 'react-native';
+import { Text, StatusBar, View, TouchableOpacity } from 'react-native';
 import SplitView from '../../widget/SplitView';
 
 class HomeScene extends PureComponent {
     render() {
         const { navigate } = this.props.navigation;
         return (
-            <View>
+            <View style={{ flex: 1, flexDirection: 'column', alignItems: 'center' }}>
                 <StatusBar
                     backgroundColor="#000"
                     networkActivityIndicatorVisible={true}
                     showHideTransition="fade"
                 />
-                <Text>This is Home. StatusBar currentHeight is {StatusBar.currentHeight}</Text>
+                <Text style={{ height: 30 }} >
+                    This is Home. StatusBar currentHeight is {StatusBar.currentHeight}</Text>
 
-                <Button title="交易公告详情" onPress={() => { navigate('Announcement'); }} />
+                <TouchableOpacity
+                    style={{ height: 30, backgroundColor: '#00aaee', width: 100 }}
+                    activeOpacity={1}
+                    onPress={() => { navigate('Announcement'); }}
+                >
+                    <Text style={{ textAlign: 'center' }}>交易公告详情</Text>
+                </TouchableOpacity>
                 <SplitView />
-                <Button title="申报记录" onPress={() => { navigate('DeclarationRecord'); }} />
+                <TouchableOpacity
+                    activeOpacity={1}
+                    style={{ height: 30, backgroundColor: '#00aaee', width: 100 }}
+                    onPress={() => { navigate('DeclarationRecord'); }}
+                >
+                    <Text style={{ textAlign: 'center' }}>申报记录</Text>
+                </TouchableOpacity>
+                <SplitView />
+                <TouchableOpacity
+                    activeOpacity={1}
+                    style={{ height: 30, backgroundColor: '#00aaee', width: 100 }}
+                    onPress={() => { navigate('Contract'); }}
+                >
+                    <Text style={{ textAlign: 'center' }}>我的合同</Text>
+                </TouchableOpacity>
+
             </View>
         );
     }

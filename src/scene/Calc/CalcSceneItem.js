@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
         paddingTop: 15,
         paddingBottom: 15,
     },
-    title: {
+    header: {
         flex: 1,
         fontSize: 15,
         textAlignVertical: 'center',
@@ -46,7 +46,7 @@ export default class extends PureComponent {
                         <Image source={this.props.img} style={{ width: 57, height: 57 }} />
                     </View>
                     <View style={styles.desc} >
-                        <Text style={styles.title}>{this.props.title}</Text>
+                        <Text style={styles.header}>{this.props.header}</Text>
                         <Text style={styles.context}>{this.props.desc}</Text>
                     </View>
                 </View>

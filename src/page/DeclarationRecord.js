@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
         borderLeftWidth: screen.onePixel,
         borderLeftColor: '#e6e6e6',
     },
-    titleText: {
+    headerText: {
         textAlign: 'center',
         textAlignVertical: 'bottom',
         color: '#3a3a3a',
@@ -103,7 +103,7 @@ export default class extends PureComponent {
                             ],
                         },
                     ],
-                    title: '本月',
+                    header: '本月',
                 },
                 {
                     data: [
@@ -118,7 +118,7 @@ export default class extends PureComponent {
                             ],
                         },
                     ],
-                    title: '5月',
+                    header: '5月',
                 },
             ],
         };
@@ -169,9 +169,9 @@ export default class extends PureComponent {
             return (
                 <View style={[styles.record, isLeft ? styles.recordLeft : styles.recordRight]}>
                     <View style={styles.recordTitle}>
-                        <Text style={styles.titleText}>{record.type}</Text>
-                        <Text style={styles.titleText}>{record.week}</Text>
-                        <Text style={styles.titleText}>{record.time}</Text>
+                        <Text style={styles.headerText}>{record.type}</Text>
+                        <Text style={styles.headerText}>{record.week}</Text>
+                        <Text style={styles.headerText}>{record.time}</Text>
                     </View>
                     <View style={styles.recordResult}>
                         <Text style={styles.recordNum}>{record.num}</Text>

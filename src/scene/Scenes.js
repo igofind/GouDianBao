@@ -11,6 +11,7 @@ import CalcScene from './Calc/CalcScene';
 import HomoScene from './Home/HomeScene';
 import LoginScene from './Login/LoginScene';
 import MineScene from './Mine/MineScene';
+import Contract from "../page/Contract";
 
 const TabScenes = TabNavigator({
     Home: {
@@ -102,6 +103,9 @@ const StackScenes = StackNavigator({
     },
     DeclarationRecord: {
         screen: DeclarationRecord,
+    },
+    Contract: {
+        screen: Contract,
     },
 }, {
     initialRouteName: 'Main',

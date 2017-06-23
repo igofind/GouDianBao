@@ -4,7 +4,7 @@ import { View } from 'react-native';
 export default class extends PureComponent {
     render() {
         return (
-            <View style={[{ height: this.props.styles ? this.props.styles.height : 20 }]} />
+            <View style={[{ height: this.props.style ? this.props.style.height : 20 }]} />
         );
     }
 }
