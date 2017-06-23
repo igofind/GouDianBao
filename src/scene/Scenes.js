@@ -67,7 +67,7 @@ const TabScenes = TabNavigator({
     tabBarPosition: 'bottom',
     lazy: true,
     order: ['Home', 'Business', 'Calc', 'Mine'],
-    initialRouteName: 'Mine',
+    initialRouteName: 'Home',
     activeBackgroundColor: '#fff',
     backBehavior: 'none',
     animationEnabled: false, // 不要动画更流畅
@@ -102,7 +102,7 @@ const StackScenes = StackNavigator({
         screen: Contract,
     },
 }, {
-    initialRouteName: 'Main',
+    initialRouteName: 'Login',
 });
 
 export default () => (<StackScenes

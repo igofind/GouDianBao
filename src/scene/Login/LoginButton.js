@@ -27,7 +27,7 @@ class LoginButton extends PureComponent {
         return (
             <TouchableOpacity activeOpacity={0.8} onPress={this.props.onPress}>
                 <View style={[styles.button, this.props.btnStyle]}>
-                    <Text style={[styles.text, this.props.textStyle]}>{this.props.header}</Text>
+                    <Text style={[styles.text, this.props.textStyle]}>{this.props.title}</Text>
                 </View>
             </TouchableOpacity>
         );

@@ -37,7 +37,7 @@ class CalcScene extends PureComponent {
                 {items.map(item => (
                     <CalcSceneItem
                         img={item.img}
-                        title={item.header}
+                        title={item.title}
                         key={item.key}
                         desc={item.desc}
                     />
