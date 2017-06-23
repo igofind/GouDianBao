@@ -71,6 +71,7 @@ const styles = StyleSheet.create({
     mineHeaderStyle: {
         ...navHeaderStyle,
         backgroundColor: '#00aaee',
+        height: 20,
     },
     mineHeaderTitleStyle: {
         ...headerTitleStyle,
@@ -84,8 +85,7 @@ const styles = StyleSheet.create({
         paddingRight: 12,
     },
 
-    arrowLeftStyle: {
-        // backgroundColor: '#0aa',
+    headerIconStyle: {
         backgroundColor: '#000',
         width: 45,
         height: 45,
@@ -102,6 +102,7 @@ export default {
     tabIconSize: 22,
     headerIconSize: 18,
     containerBC: 'auto',
+    cellHeight: 45,
     styles,
     ...statusBarBC,
 };

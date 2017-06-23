@@ -4,7 +4,7 @@ import HeaderIcon from './HeaderIcon';
 export default class extends PureComponent {
     render() {
         return (
-            <HeaderIcon onPress={() => {}} />
+            <HeaderIcon onPress={() => {}} style={this.props.style} />
         );
     }
 }

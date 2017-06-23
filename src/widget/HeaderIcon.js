@@ -1,17 +1,18 @@
 import React, { PureComponent } from 'react';
-import { TouchableHighlight, View } from 'react-native';
+import { TouchableOpacity, View } from 'react-native';
 import theme from '../style/theme';
 
 export default class extends PureComponent {
     render() {
         return (
-            <TouchableHighlight
+            <TouchableOpacity
+                activeOpacity={this.props.activeOpacity || 0.7}
                 onPress={() => this.props.onPress()}
             >
-                <View style={theme.styles.arrowLeftStyle}>
+                <View style={[theme.styles.headerIconStyle, this.props.style]}>
                     {this.props.children}
                 </View>
-            </TouchableHighlight>
+            </TouchableOpacity>
         );
     }
 }

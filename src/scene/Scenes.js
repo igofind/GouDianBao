@@ -11,7 +11,9 @@ import CalcScene from './Calc/CalcScene';
 import HomoScene from './Home/HomeScene';
 import LoginScene from './Login/LoginScene';
 import MineScene from './Mine/MineScene';
-import Contract from "../page/Contract";
+import Contract from '../page/Contract';
+import Bell from '../widget/Bell';
+import EmptyIcon from '../widget/EmptyIcon';
 
 const TabScenes = TabNavigator({
     Home: {
@@ -48,32 +50,24 @@ const TabScenes = TabNavigator({
             tabBarLabel: '辅助计算',
             tabBarIcon: ({ tintColor }) =>
                 (<FontAwesome name="calculator" size={theme.tabIconSize} color={tintColor} />),
-            headerLeft: (<View style={theme.styles.headerLeftIconView} />),
-            headerRight: (
-                <View style={theme.styles.headerRightIconView}>
-                    <FontAwesome name="bell" size={theme.headerIconSize} color="#fff" />
-                </View>
-            ),
+            headerLeft: <EmptyIcon />,
+            headerRight: <Bell onPress={() => { }} />,
         },
     },
     Mine: {
         screen: MineScene,
         navigationOptions: {
-            headerStyle: theme.styles.mineHeaderStyle,
-            headerTitle: '我的',
-            headerTitleStyle: theme.styles.mineHeaderTitleStyle,
+            header: null,
             tabBarLabel: '我的',
             tabBarIcon: ({ tintColor }) => (<FontAwesome name="user-o" size={theme.tabIconSize} color={tintColor} />),
-            headerLeft: null,
-            headerRight: null,
         },
     },
 }, {
     tabBarComponent: TabBarBottom,
     tabBarPosition: 'bottom',
     lazy: true,
-    initialRouteName: 'Home',
     order: ['Home', 'Business', 'Calc', 'Mine'],
+    initialRouteName: 'Mine',
     activeBackgroundColor: '#fff',
     backBehavior: 'none',
     animationEnabled: false, // 不要动画更流畅
