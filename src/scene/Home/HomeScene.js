@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react';
 import { Text, StatusBar, View, Button } from 'react-native';
+import SplitView from '../../widget/SplitView';
 
 class HomeScene extends PureComponent {
     render() {
@@ -13,7 +14,9 @@ class HomeScene extends PureComponent {
                 />
                 <Text>This is Home. StatusBar currentHeight is {StatusBar.currentHeight}</Text>
 
-                <Button title="GO Announcement" onPress={() => { navigate('Announcement'); }} />
+                <Button title="交易公告详情" onPress={() => { navigate('Announcement'); }} />
+                <SplitView />
+                <Button title="申报记录" onPress={() => { navigate('DeclarationRecord'); }} />
             </View>
         );
     }

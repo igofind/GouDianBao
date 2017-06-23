@@ -3,13 +3,14 @@ import { StatusBar, View } from 'react-native';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import SimpleLineIcons from 'react-native-vector-icons/Octicons';
 import { StackNavigator, TabBarBottom, TabNavigator } from 'react-navigation';
+import Announcement from '../page/Announcement';
+import DeclarationRecord from '../page/DeclarationRecord';
 import theme from '../style/theme';
 import BusinessScene from './Business/BusinessScene';
 import CalcScene from './Calc/CalcScene';
 import HomoScene from './Home/HomeScene';
 import LoginScene from './Login/LoginScene';
 import MineScene from './Mine/MineScene';
-import Announcement from '../page/Announcement';
 
 const TabScenes = TabNavigator({
     Home: {
@@ -98,6 +99,9 @@ const StackScenes = StackNavigator({
     },
     Announcement: {
         screen: Announcement,
+    },
+    DeclarationRecord: {
+        screen: DeclarationRecord,
     },
 }, {
     initialRouteName: 'Main',
