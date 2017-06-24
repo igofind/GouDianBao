@@ -248,9 +248,29 @@ export default class extends PureComponent {
         headerRight: <EmptyIcon />,
     });
 
+    constructor() {
+        super();
+        this.timer = null;
+        this.state = {
+            html: '',
+        };
+    }
+
+    componentDidMount() {
+        this.timer = requestAnimationFrame(() => {
+            this.setState({
+                html: tradeDetailText,
+            });
+        });
+    }
+
+    componentWillUmount() {
+        cancelAnimationFrame(this.timer);
+    }
+
     render() {
         return (
-            <WebView source={{ html: tradeDetailText }} />
+            <WebView source={{ html: this.state.html }} />
         );
     }
 }

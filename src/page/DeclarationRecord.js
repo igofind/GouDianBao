@@ -77,6 +77,37 @@ const styles = StyleSheet.create({
     },
 });
 
+const fetchData = [
+    {
+        data: [
+            {
+                records: [
+                        { type: '双边协商', week: '今日', time: '10:45', num: 2000, unit: '兆瓦时', key: 'record-1' },
+                        { type: '集中竞价', week: '周五', time: '10:45', num: 1230, unit: '兆瓦时', key: 'record-2' },
+                        { type: '挂牌', week: '周一', time: '10:45', num: 512, unit: '兆瓦时', key: 'record-3' },
+                        { type: '挂牌', week: '周一', time: '10:45', num: 122, unit: '兆瓦时', key: 'record-4' },
+                ],
+            },
+        ],
+        title: '本月',
+    },
+    {
+        data: [
+            {
+                records: [
+                        { type: '双边协商', week: '今日', time: '10:45', num: 2000, unit: '兆瓦时', key: 'record-1' },
+                        { type: '集中竞价', week: '周五', time: '10:45', num: 123, unit: '兆瓦时', key: 'record-2' },
+                        { type: '挂牌', week: '周一', time: '10:45', num: 331, unit: '兆瓦时', key: 'record-3' },
+                        { type: '双边协商', week: '今日', time: '10:45', num: 675, unit: '兆瓦时', key: 'record-1' },
+                        { type: '集中竞价', week: '周五', time: '10:45', num: 2300, unit: '兆瓦时', key: 'record-2' },
+                        { type: '挂牌', week: '周一', time: '10:45', num: 2120, unit: '兆瓦时', key: 'record-4' },
+                ],
+            },
+        ],
+        title: '5月',
+    },
+];
+
 export default class extends PureComponent {
 
     static navigationOptions = ({ navigation }) => ({
@@ -90,44 +121,24 @@ export default class extends PureComponent {
     constructor() {
         super();
         this.count = 1;
+        this.timer = null;
         this.state = {
-            datas: [
-                {
-                    data: [
-                        {
-                            records: [
-                                { type: '双边协商', week: '今日', time: '10:45', num: 2000, unit: '兆瓦时', key: 'record-1' },
-                                { type: '集中竞价', week: '周五', time: '10:45', num: 1230, unit: '兆瓦时', key: 'record-2' },
-                                { type: '挂牌', week: '周一', time: '10:45', num: 512, unit: '兆瓦时', key: 'record-3' },
-                                { type: '挂牌', week: '周一', time: '10:45', num: 122, unit: '兆瓦时', key: 'record-4' },
-                            ],
-                        },
-                    ],
-                    header: '本月',
-                },
-                {
-                    data: [
-                        {
-                            records: [
-                                { type: '双边协商', week: '今日', time: '10:45', num: 2000, unit: '兆瓦时', key: 'record-1' },
-                                { type: '集中竞价', week: '周五', time: '10:45', num: 123, unit: '兆瓦时', key: 'record-2' },
-                                { type: '挂牌', week: '周一', time: '10:45', num: 331, unit: '兆瓦时', key: 'record-3' },
-                                { type: '双边协商', week: '今日', time: '10:45', num: 675, unit: '兆瓦时', key: 'record-1' },
-                                { type: '集中竞价', week: '周五', time: '10:45', num: 2300, unit: '兆瓦时', key: 'record-2' },
-                                { type: '挂牌', week: '周一', time: '10:45', num: 2120, unit: '兆瓦时', key: 'record-4' },
-                            ],
-                        },
-                    ],
-                    header: '5月',
-                },
-            ],
+            datas: [],
         };
     }
-
+    componentDidMount() {
+        this.timer = requestAnimationFrame(() => {
+            this.setState({
+                datas: fetchData,
+            });
+        });
+    }
     onEndReached() {
         console.log('onEndReached');
     }
-
+    componentWillUmount() {
+        cancelAnimationFrame(this.timer);
+    }
     doRefresh() {
         // const datas = [item, ...this.state.datas];
         // this.setState({
@@ -200,9 +211,10 @@ export default class extends PureComponent {
                     refreshing={false}
                     onRefresh={() => this.doRefresh()}
                     ListFooterComponent={
-                        <Text style={{ flex: 1, textAlign: 'center', marginTop: 20, color: '#bdbdbd' }}>
+                        (datas.length > 0
+                        && <Text style={{ flex: 1, textAlign: 'center', marginTop: 20, color: '#bdbdbd' }}>
                             -------- 我也是有底线的人 --------
-                        </Text>
+                        </Text>)
                     }
                     onEndReached={() => this.onEndReached()}
                     sections={datas}

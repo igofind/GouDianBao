@@ -65,7 +65,7 @@ const TabScenes = TabNavigator({
 }, {
     tabBarComponent: TabBarBottom,
     tabBarPosition: 'bottom',
-    lazy: true,
+    lazy: false,
     order: ['Home', 'Business', 'Calc', 'Mine'],
     initialRouteName: 'Home',
     activeBackgroundColor: '#fff',
