@@ -1,5 +1,5 @@
 import React from 'react';
-import { StatusBar, View } from 'react-native';
+import { StatusBar} from 'react-native';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import SimpleLineIcons from 'react-native-vector-icons/Octicons';
 import { StackNavigator, TabBarBottom, TabNavigator } from 'react-navigation';
@@ -71,6 +71,7 @@ const TabScenes = TabNavigator({
     activeBackgroundColor: '#fff',
     backBehavior: 'none',
     animationEnabled: false, // 不要动画更流畅
+    swipeEnabled: false, // TODO 左右滑动切换时，导航条变化不流畅
     tabBarOptions: {
         activeTintColor: theme.blue,
         activeBackgroundColor: '#fff',

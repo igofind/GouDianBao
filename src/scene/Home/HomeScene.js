@@ -1,43 +1,34 @@
 import React, { PureComponent } from 'react';
-import { Text, StatusBar, View, TouchableOpacity } from 'react-native';
+import { InteractionManager, Text, StatusBar, View } from 'react-native';
 import SplitView from '../../widget/SplitView';
+import IconCell from '../../widget/IconCell';
 
 class HomeScene extends PureComponent {
+
+    navigate(...args) {
+        InteractionManager.runAfterInteractions(() => {
+            this.props.navigation.navigate(...args);
+        });
+    }
+
     render() {
-        const { navigate } = this.props.navigation;
         return (
-            <View style={{ flex: 1, flexDirection: 'column', alignItems: 'center' }}>
+            <View style={{ flex: 1, flexDirection: 'column' }}>
                 <StatusBar
                     backgroundColor="#000"
                     networkActivityIndicatorVisible={true}
                     showHideTransition="fade"
                 />
-                <Text style={{ height: 30 }} >
-                    This is Home. StatusBar currentHeight is {StatusBar.currentHeight}</Text>
-
-                <TouchableOpacity
-                    style={{ height: 30, backgroundColor: '#00aaee', width: 100 }}
-                    activeOpacity={1}
-                    onPress={() => { navigate('Announcement'); }}
-                >
-                    <Text style={{ textAlign: 'center' }}>交易公告详情</Text>
-                </TouchableOpacity>
                 <SplitView />
-                <TouchableOpacity
-                    activeOpacity={1}
-                    style={{ height: 30, backgroundColor: '#00aaee', width: 100 }}
-                    onPress={() => { navigate('DeclarationRecord'); }}
-                >
-                    <Text style={{ textAlign: 'center' }}>申报记录</Text>
-                </TouchableOpacity>
-                <SplitView />
-                <TouchableOpacity
-                    activeOpacity={1}
-                    style={{ height: 30, backgroundColor: '#00aaee', width: 100 }}
-                    onPress={() => { navigate('Contract'); }}
-                >
-                    <Text style={{ textAlign: 'center' }}>我的合同</Text>
-                </TouchableOpacity>
+                <IconCell onPress={() => this.navigate('Announcement')}>
+                    <Text>交易公告详情</Text>
+                </IconCell>
+                <IconCell onPress={() => this.navigate('DeclarationRecord')}>
+                    <Text>申报记录</Text>
+                </IconCell>
+                <IconCell onPress={() => this.navigate('Contract')}>
+                    <Text>我的合同</Text>
+                </IconCell>
 
             </View>
         );

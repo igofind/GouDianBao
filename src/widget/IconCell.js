@@ -3,7 +3,6 @@ import { Image, View, StyleSheet, TouchableOpacity } from 'react-native';
 import Entypo from 'react-native-vector-icons/Entypo';
 import theme from '../style/theme';
 import screen from '../common/screen';
-import TouchableItem from 'react-navigation/src/views/TouchableItem';
 
 const styles = StyleSheet.create({
     container: {
@@ -36,7 +35,7 @@ const styles = StyleSheet.create({
 export default class extends PureComponent {
     render() {
         return (
-            <TouchableOpacity activeOpacity={0.8} onPress={this.props.onPress}>
+            <TouchableOpacity activeOpacity={theme.activeOpacity} onPress={this.props.onPress}>
                 <View style={styles.container} >
                     <View style={styles.imageView} >
                         <Image source={this.props.image} style={{ width: 25, height: 25 }} />

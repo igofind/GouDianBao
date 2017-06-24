@@ -103,6 +103,7 @@ export default {
     headerIconSize: 18,
     containerBC: 'auto',
     cellHeight: 45,
+    activeOpacity: 0.8,
     styles,
     ...statusBarBC,
 };
