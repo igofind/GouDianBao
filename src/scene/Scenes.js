@@ -1,5 +1,5 @@
 import React from 'react';
-import { StatusBar } from 'react-native';
+import { InteractionManager, StatusBar } from 'react-native';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import SimpleLineIcons from 'react-native-vector-icons/Octicons';
 import { StackNavigator, TabBarBottom, TabNavigator } from 'react-navigation';
@@ -104,6 +104,7 @@ const StackScenes = StackNavigator({
     },
 }, {
     initialRouteName: 'Login',
+    headerMode: 'screen',
 });
 
 export default () => (<StackScenes
@@ -112,27 +113,37 @@ export default () => (<StackScenes
             // tabNavigator 页面改变时，改变StatusBar
             switch (action.routeName) {
                 case 'Home':
-                    // StatusBar.setBackgroundColor(theme.homeStatusBarBC, true);
-                    StatusBar.setBackgroundColor(theme.homeStatusBarBC);
+                    InteractionManager.runAfterInteractions(() => {
+                        StatusBar.setBackgroundColor(theme.homeStatusBarBC, true);
+                    });
                     break;
                 case 'Business':
-                    // StatusBar.setBackgroundColor(theme.businessStatusBarBC, true);
-                    StatusBar.setBackgroundColor(theme.businessStatusBarBC);
+                    InteractionManager.runAfterInteractions(() => {
+                        StatusBar.setBackgroundColor(theme.businessStatusBarBC, true);
+                    });
                     break;
                 case 'Calc':
-                    // StatusBar.setBackgroundColor(theme.calcStatusBarBC, true);
-                    StatusBar.setBackgroundColor(theme.calcStatusBarBC);
+                    InteractionManager.runAfterInteractions(() => {
+                        StatusBar.setBackgroundColor(theme.calcStatusBarBC, true);
+                    });
                     break;
                 case 'Mine':
-                    // StatusBar.setBackgroundColor(theme.mineStatusBarBC, true);
-                    StatusBar.setBackgroundColor(theme.mineStatusBarBC);
+                    InteractionManager.runAfterInteractions(() => {
+                        StatusBar.setBackgroundColor(theme.mineStatusBarBC, true);
+                    });
                     break;
                 default:
                     // 与initialRouteName的routeName保持一致
                     // 并在该screen中加上StatusBar组件
-                    // StatusBar.setBackgroundColor(theme.calcStatusBarBC, true);
+                    InteractionManager.runAfterInteractions(() => {
+                        StatusBar.setBackgroundColor(theme.homeStatusBarBC, true);
+                    });
                     break;
             }
+        } else if (action.type.toLowerCase() === 'navigation/back' && currentState.routes[currentState.index].routeName === 'Login') {
+            InteractionManager.runAfterInteractions(() => {
+                StatusBar.setBackgroundColor('#fff', true);
+            });
         }
     }}
 />);

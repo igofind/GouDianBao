@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import {Image, View, StyleSheet, StatusBar} from 'react-native';
+import { Image, View, StyleSheet, StatusBar } from 'react-native';
 import InputItem from './LoginInputItem';
 import LoginButton from './LoginButton';
 import LoginCheckBox from './LoginCheckBox';
@@ -40,6 +40,7 @@ class LoginScene extends PureComponent {
                     animated={true}
                     backgroundColor="#fff"
                     barStyle="dark-content"
+                    translucent={true}
                     networkActivityIndicatorVisible={true}
                 />
                 <View style={styles.logoContainer} >
