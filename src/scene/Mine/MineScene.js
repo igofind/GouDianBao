@@ -36,7 +36,7 @@ class MineScene extends PureComponent {
             <View style={styles.container}>
                 <View style={styles.header} >
                     <View style={styles.iconLine} >
-                        <Bell style={{ backgroundColor: '#00aaee' }} onPress={() => {}} />
+                        <Bell onPress={() => {}} />
                     </View>
                     <View style={{ flexDirection: 'row' }}>
                         <View style={styles.avatar}>

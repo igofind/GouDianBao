@@ -1,5 +1,5 @@
 import React from 'react';
-import { StatusBar} from 'react-native';
+import { StatusBar } from 'react-native';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import SimpleLineIcons from 'react-native-vector-icons/Octicons';
 import { StackNavigator, TabBarBottom, TabNavigator } from 'react-navigation';

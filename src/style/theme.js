@@ -86,7 +86,6 @@ const styles = StyleSheet.create({
     },
 
     headerIconStyle: {
-        backgroundColor: '#000',
         width: 45,
         height: 45,
         paddingRight: 3,
