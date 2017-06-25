@@ -109,6 +109,7 @@ export default {
     containerBC: 'auto',
     cellHeight: 45,
     activeOpacity: 0.8,
+    listBorderColor: '#e6e6e6',
     styles,
     ...statusBarBC,
 };

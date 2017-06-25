@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
         flexDirection: 'column',
         backgroundColor: '#fff',
         borderBottomWidth: screen.twoPixel,
-        borderBottomColor: '#e6e6e6',
+        borderBottomColor: theme.listBorderColor,
     },
     recordBlank: {
         flex: 1,
@@ -43,11 +43,11 @@ const styles = StyleSheet.create({
     },
     recordLeft: {
         borderRightWidth: screen.onePixel,
-        borderRightColor: '#e6e6e6',
+        borderRightColor: theme.listBorderColor,
     },
     recordRight: {
         borderLeftWidth: screen.onePixel,
-        borderLeftColor: '#e6e6e6',
+        borderLeftColor: theme.listBorderColor,
     },
     headerText: {
         textAlign: 'center',

@@ -15,6 +15,7 @@ import MineScene from './Mine/MineScene';
 import Contract from '../page/Contract';
 import Bell from '../widget/Bell';
 import EmptyIcon from '../widget/EmptyIcon';
+import MonthElecDetail from '../page/MonthElecDetail';
 
 const TabScenes = TabNavigator({
     Home: {
@@ -104,6 +105,9 @@ const StackScenes = StackNavigator({
     },
     Contract: {
         screen: Contract,
+    },
+    MonthElecDetail: {
+        screen: MonthElecDetail,
     },
 }, {
     initialRouteName: 'Login',
