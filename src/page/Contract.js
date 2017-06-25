@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import { Text, View, StyleSheet, Image, ScrollView, TouchableOpacity } from 'react-native';
+import { InteractionManager, Text, View, StyleSheet, Image, ScrollView, TouchableOpacity } from 'react-native';
 import Entypo from 'react-native-vector-icons/Entypo';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -231,7 +231,7 @@ export default class extends PureComponent {
             list: null,
         };
     }
-    componentDidMount() {
+    /* componentDidMount() {
         this.timer = requestAnimationFrame(() => {
             this.setState({
                 list,
@@ -240,6 +240,14 @@ export default class extends PureComponent {
     }
     componentWillUnmount() {
         cancelAnimationFrame(this.timer);
+    }*/
+
+    componentDidMount() {
+        InteractionManager.runAfterInteractions(() => {
+            this.setState({
+                list,
+            });
+        });
     }
 
     render() {

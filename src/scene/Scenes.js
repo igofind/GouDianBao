@@ -3,6 +3,7 @@ import { InteractionManager, StatusBar } from 'react-native';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import SimpleLineIcons from 'react-native-vector-icons/Octicons';
 import { StackNavigator, TabBarBottom, TabNavigator } from 'react-navigation';
+import CardStackStyleInterpolator from 'react-navigation/src/views/CardStackStyleInterpolator';
 import Announcement from '../page/Announcement';
 import DeclarationRecord from '../page/DeclarationRecord';
 import theme from '../style/theme';
@@ -87,7 +88,9 @@ const StackScenes = StackNavigator({
     Login: {
         screen: LoginScene,
         navigationOptions: {
-            header: null,
+            headerStyle: theme.styles.loginHeaderStyle,
+            headerLeft: null,
+            headerRight: null,
         },
     },
     Main: {
@@ -105,6 +108,9 @@ const StackScenes = StackNavigator({
 }, {
     initialRouteName: 'Login',
     headerMode: 'float',
+    transitionConfig: () => ({
+        screenInterpolator: CardStackStyleInterpolator.forHorizontal,
+    }),
 });
 
 export default () => (<StackScenes
@@ -114,35 +120,36 @@ export default () => (<StackScenes
             switch (action.routeName) {
                 case 'Home':
                     InteractionManager.runAfterInteractions(() => {
-                        StatusBar.setBackgroundColor(theme.homeStatusBarBC, true);
+                        StatusBar.setBackgroundColor(theme.homeStatusBarBC, false);
                     });
                     break;
                 case 'Business':
                     InteractionManager.runAfterInteractions(() => {
-                        StatusBar.setBackgroundColor(theme.businessStatusBarBC, true);
+                        StatusBar.setBackgroundColor(theme.businessStatusBarBC, false);
                     });
                     break;
                 case 'Calc':
                     InteractionManager.runAfterInteractions(() => {
-                        StatusBar.setBackgroundColor(theme.calcStatusBarBC, true);
+                        StatusBar.setBackgroundColor(theme.calcStatusBarBC, false);
                     });
                     break;
                 case 'Mine':
                     InteractionManager.runAfterInteractions(() => {
-                        StatusBar.setBackgroundColor(theme.mineStatusBarBC, true);
+                        StatusBar.setBackgroundColor(theme.mineStatusBarBC, false);
                     });
                     break;
                 default:
                     // 与initialRouteName的routeName保持一致
                     // 并在该screen中加上StatusBar组件
                     InteractionManager.runAfterInteractions(() => {
-                        StatusBar.setBackgroundColor(theme.homeStatusBarBC, true);
+                        StatusBar.setBackgroundColor(theme.homeStatusBarBC, false);
                     });
                     break;
             }
-        } else if (action.type.toLowerCase() === 'navigation/back' && currentState.routes[currentState.index].routeName === 'Login') {
+        } else if (action.type.toLowerCase() === 'navigation/back'
+        && currentState.routes[currentState.index].routeName === 'Login') {
             InteractionManager.runAfterInteractions(() => {
-                StatusBar.setBackgroundColor('#fff', true);
+                StatusBar.setBackgroundColor('#fff', false); // TODO 登录后，是不能再返回登录页面的，除非是退出操作
             });
         }
     }}

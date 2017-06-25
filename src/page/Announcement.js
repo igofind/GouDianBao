@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import { WebView } from 'react-native';
+import { InteractionManager, WebView } from 'react-native';
 import theme from '../style/theme';
 import ArrowLeft from '../widget/ArrowLeft';
 import EmptyIcon from '../widget/EmptyIcon';
@@ -256,7 +256,7 @@ export default class extends PureComponent {
         };
     }
 
-    componentDidMount() {
+    /* componentDidMount() {
         this.timer = requestAnimationFrame(() => {
             this.setState({
                 html: tradeDetailText,
@@ -266,6 +266,13 @@ export default class extends PureComponent {
 
     componentWillUnmount() {
         cancelAnimationFrame(this.timer);
+    }*/
+    componentDidMount() {
+        InteractionManager.runAfterInteractions(() => {
+            this.setState({
+                html: tradeDetailText,
+            });
+        });
     }
 
     render() {

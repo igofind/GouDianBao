@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import { StyleSheet, SectionList, Text, View } from 'react-native';
+import { InteractionManager, StyleSheet, SectionList, Text, View } from 'react-native';
 import theme from '../style/theme';
 import ArrowLeft from '../widget/ArrowLeft';
 import EmptyIcon from '../widget/EmptyIcon';
@@ -126,7 +126,7 @@ export default class extends PureComponent {
             datas: [],
         };
     }
-    componentDidMount() {
+    /* componentDidMount() {
         this.timer = requestAnimationFrame(() => {
             this.setState({
                 datas: fetchData,
@@ -135,6 +135,13 @@ export default class extends PureComponent {
     }
     componentWillUnmount() {
         cancelAnimationFrame(this.timer);
+    }*/
+    componentDidMount() {
+        InteractionManager.runAfterInteractions(() => {
+            this.setState({
+                datas: fetchData,
+            });
+        });
     }
     onEndReached() {
         // console.log('onEndReached');
@@ -205,6 +212,7 @@ export default class extends PureComponent {
             <View style={styles.container} >
                 <SectionList
                     renderItem={({ item }) => this.renderItem(item)}
+                    initialNumToRender={1}
                     renderSectionHeader={({ section }) => this.renderSectionHeader(section)}
                     keyExtractor={(item, index) => `record-${index}`}
                     ItemSeparatorComponent={SplitView}

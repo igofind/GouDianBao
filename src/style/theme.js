@@ -42,6 +42,11 @@ const styles = StyleSheet.create({
         color: '#fff',
     },
 
+    loginHeaderStyle: {
+        ...navHeaderStyle,
+        backgroundColor: '#fff',
+    },
+
     homeHeaderStyle: {
         ...navHeaderStyle,
         backgroundColor: '#000',

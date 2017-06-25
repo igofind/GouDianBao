@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import { Text, View, StyleSheet, Image } from 'react-native';
+import {Text, View, StyleSheet, Image, StatusBar} from 'react-native';
 import IconCell from '../../widget/IconCell';
 import SplitView from '../../widget/SplitView';
 import Bell from '../../widget/Bell';
@@ -10,7 +10,8 @@ const styles = StyleSheet.create({
     },
     header: {
         flexDirection: 'column',
-        height: 120,
+        height: 120 + StatusBar.currentHeight,
+        paddingTop: StatusBar.currentHeight,
         backgroundColor: '#00aaee',
     },
     iconLine: {

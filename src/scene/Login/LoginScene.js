@@ -10,11 +10,11 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
     },
     logoContainer: {
-        height: 122,
+        height: 77 + StatusBar.currentHeight,
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
-        marginTop: 75,
+        marginTop: 30,
     },
     image: {
         marginTop: 0,
@@ -37,11 +37,10 @@ class LoginScene extends PureComponent {
         return (
             <View style={styles.body}>
                 <StatusBar
-                    animated={true}
+                    animated={false}
                     backgroundColor="#fff"
                     barStyle="dark-content"
                     translucent={true}
-                    networkActivityIndicatorVisible={true}
                 />
                 <View style={styles.logoContainer} >
                     <Image source={require('../../image/login_logo.png')} style={styles.image} />

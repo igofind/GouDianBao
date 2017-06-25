@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import { InteractionManager, Text, View } from 'react-native';
+import {InteractionManager, StatusBar, Text, View} from 'react-native';
 import SplitView from '../../widget/SplitView';
 import IconCell from '../../widget/IconCell';
 
@@ -14,6 +14,11 @@ class HomeScene extends PureComponent {
     render() {
         return (
             <View style={{ flex: 1, flexDirection: 'column' }}>
+                <StatusBar
+                    backgroundColor="#000"
+                    barStyle="light-content"
+                    translucent={true}
+                />
                 <SplitView />
                 <IconCell onPress={() => this.navigate('Announcement')}>
                     <Text>交易公告详情</Text>
