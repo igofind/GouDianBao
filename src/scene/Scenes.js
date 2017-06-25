@@ -104,7 +104,7 @@ const StackScenes = StackNavigator({
     },
 }, {
     initialRouteName: 'Login',
-    headerMode: 'screen',
+    headerMode: 'float',
 });
 
 export default () => (<StackScenes

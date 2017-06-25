@@ -133,11 +133,11 @@ export default class extends PureComponent {
             });
         });
     }
-    onEndReached() {
-        console.log('onEndReached');
-    }
-    componentWillUmount() {
+    componentWillUnmount() {
         cancelAnimationFrame(this.timer);
+    }
+    onEndReached() {
+        // console.log('onEndReached');
     }
     doRefresh() {
         // const datas = [item, ...this.state.datas];

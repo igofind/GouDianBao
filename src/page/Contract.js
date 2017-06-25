@@ -238,7 +238,7 @@ export default class extends PureComponent {
             });
         });
     }
-    componentWillUmount() {
+    componentWillUnmount() {
         cancelAnimationFrame(this.timer);
     }
 
