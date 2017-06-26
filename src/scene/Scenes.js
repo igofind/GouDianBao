@@ -12,7 +12,8 @@ import CalcScene from './Calc/CalcScene';
 import HomoScene from './Home/HomeScene';
 import LoginScene from './Login/LoginScene';
 import MineScene from './Mine/MineScene';
-import Contract from '../page/Contract';
+import ContractExec from '../page/ContractExec';
+import ContractList from '../page/ContractList';
 import Bell from '../widget/Bell';
 import EmptyIcon from '../widget/EmptyIcon';
 import MonthElecDetail from '../page/MonthElecDetail';
@@ -103,8 +104,11 @@ const StackScenes = StackNavigator({
     DeclarationRecord: {
         screen: DeclarationRecord,
     },
-    Contract: {
-        screen: Contract,
+    ContractExec: {
+        screen: ContractExec,
+    },
+    ContractList: {
+        screen: ContractList,
     },
     MonthElecDetail: {
         screen: MonthElecDetail,

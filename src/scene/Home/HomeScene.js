@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import {InteractionManager, StatusBar, Text, View} from 'react-native';
+import { InteractionManager, StatusBar, Text, View } from 'react-native';
 import SplitView from '../../widget/SplitView';
 import IconCell from '../../widget/IconCell';
 
@@ -26,7 +26,10 @@ class HomeScene extends PureComponent {
                 <IconCell onPress={() => this.navigate('DeclarationRecord')}>
                     <Text>申报记录</Text>
                 </IconCell>
-                <IconCell onPress={() => this.navigate('Contract')}>
+                <IconCell onPress={() => this.navigate('ContractExec')}>
+                    <Text>合同执行情况</Text>
+                </IconCell>
+                <IconCell onPress={() => this.navigate('ContractList')}>
                     <Text>我的合同</Text>
                 </IconCell>
                 <IconCell onPress={() => this.navigate('MonthElecDetail')}>
