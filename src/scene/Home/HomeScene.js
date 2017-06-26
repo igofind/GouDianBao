@@ -38,6 +38,9 @@ class HomeScene extends PureComponent {
                 <IconCell onPress={() => this.navigate('CompanyInfo')}>
                     <Text>企业信息</Text>
                 </IconCell>
+                <IconCell onPress={() => this.navigate('DealList')}>
+                    <Text>市场成交情况</Text>
+                </IconCell>
 
             </View>
         );

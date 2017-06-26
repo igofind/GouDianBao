@@ -17,7 +17,8 @@ import ContractList from '../page/ContractList';
 import Bell from '../widget/Bell';
 import EmptyIcon from '../widget/EmptyIcon';
 import MonthElecDetail from '../page/MonthElecDetail';
-import CompanyInfo from "../page/CompanyInfo";
+import CompanyInfo from '../page/CompanyInfo';
+import DealList from '../page/DealList';
 
 const TabScenes = TabNavigator({
     Home: {
@@ -116,6 +117,9 @@ const StackScenes = StackNavigator({
     },
     CompanyInfo: {
         screen: CompanyInfo,
+    },
+    DealList: {
+        screen: DealList,
     },
 }, {
     initialRouteName: 'Main',
