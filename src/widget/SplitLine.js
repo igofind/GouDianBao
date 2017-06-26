@@ -11,7 +11,7 @@ const styles = StyleSheet.create({
     line: {
         flex: 1,
         height: screen.twoPixel,
-        backgroundColor: '#DADADA',
+        backgroundColor: '#bdbdbd',
         marginLeft: theme.marginLeft,
         marginRight: theme.marginRight,
     },
@@ -25,13 +25,23 @@ const styles = StyleSheet.create({
 
 export default class extends PureComponent {
     render() {
+        const noTitle = !this.props.title;
+        const text = noTitle ? null : <Text style={[styles.title, this.props.titleStyle]}>{this.props.title}</Text>;
         return (
             <View
                 style={styles.container}
             >
-                <View style={[styles.line, this.props.height && { height: this.props.height }]} />
-                <Text style={[styles.title, this.props.titleStyle]}>{this.props.title}</Text>
-                <View style={[styles.line, this.props.height && { height: this.props.height }]} />
+                <View style={[
+                    styles.line,
+                    this.props.height && { height: this.props.height },
+                    noTitle && { marginRight: 0 }]}
+                />
+                {text}
+                <View style={[
+                    styles.line,
+                    this.props.height && { height: this.props.height },
+                    noTitle && { marginLeft: 0 }]}
+                />
             </View>
         );
     }
