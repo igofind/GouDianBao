@@ -5,6 +5,7 @@ import theme from '../style/theme';
 import ArrowLeft from '../widget/ArrowLeft';
 import HeaderBtn from '../widget/HeaderBtn';
 import SplitView from '../widget/SplitView';
+import PickerCell from "../widget/PickerCell";
 
 const styles = StyleSheet.create({
     inputItem: {
@@ -121,12 +122,12 @@ export default class extends PureComponent {
                 <InputItem label="企业法人" editable={editable} value="周庆捷" />
                 <InputItem label="企业性质" editable={editable} value="高新技术" />
                 <InputItem label="企业地址" editable={editable} value="西二旗大街领袖新硅谷" />
-                <InputItem label="注册地址" editable={editable} value="海淀区分局" />
+                <PickerCell label="注册地址" value="海淀区分局" />
                 <InputItem label="税务登记号" editable={editable} value="123456789" />
                 <SplitView style={{ height: 12 }} />
                 <InputItem label="营销户名" editable={editable} value="高新技术" />
                 <InputItem label="营销系统号" editable={editable} value="3456789" />
-                <InputItem label="供电电压" editable={editable} value="220V" />
+                <PickerCell label="供电电压" value="220" />
                 <InputItem label="关口计量点" editable={editable} value="123456789" />
             </View>
         );

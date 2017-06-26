@@ -19,6 +19,7 @@ import EmptyIcon from '../widget/EmptyIcon';
 import MonthElecDetail from '../page/MonthElecDetail';
 import CompanyInfo from '../page/CompanyInfo';
 import DealList from '../page/DealList';
+import ElecDeclare from "./ElecDeclare";
 
 const TabScenes = TabNavigator({
     Home: {
@@ -120,6 +121,9 @@ const StackScenes = StackNavigator({
     },
     DealList: {
         screen: DealList,
+    },
+    ElecDeclare: {
+        screen: ElecDeclare,
     },
 }, {
     initialRouteName: 'Main',

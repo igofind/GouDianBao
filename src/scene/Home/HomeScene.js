@@ -41,6 +41,9 @@ class HomeScene extends PureComponent {
                 <IconCell onPress={() => this.navigate('DealList')}>
                     <Text>市场成交情况</Text>
                 </IconCell>
+                <IconCell onPress={() => this.navigate('ElecDeclare')}>
+                    <Text>电量申报</Text>
+                </IconCell>
 
             </View>
         );
