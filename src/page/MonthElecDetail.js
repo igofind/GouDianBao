@@ -28,10 +28,6 @@ const styles = StyleSheet.create({
         marginRight: theme.marginRight,
         width: 30,
         height: 30,
-        /* borderTopLeftRadius: 4,
-        borderTopRightRadius: 4,
-        borderBottomLeftRadius: 4,
-        borderBottomRightRadius: 4,*/
         borderRadius: 4,
         color: '#fff',
         textAlign: 'center',

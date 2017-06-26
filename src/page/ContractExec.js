@@ -228,7 +228,7 @@ export default class extends PureComponent {
         super();
         this.timer = null;
         this.state = {
-            list: null,
+            list,
         };
     }
     /* componentDidMount() {
@@ -243,11 +243,11 @@ export default class extends PureComponent {
     }*/
 
     componentDidMount() {
-        InteractionManager.runAfterInteractions(() => {
+        /* InteractionManager.runAfterInteractions(() => {
             this.setState({
                 list,
             });
-        });
+        });*/
     }
 
     render() {

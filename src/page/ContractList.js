@@ -209,17 +209,17 @@ export default class extends PureComponent {
     constructor() {
         super();
         this.state = {
-            list: null,
+            list,
         };
     }
 
-    componentDidMount() {
+    /* componentDidMount() {
         InteractionManager.runAfterInteractions(() => {
             this.setState({
                 list,
             });
         });
-    }
+    }*/
 
     render() {
         return (this.state.list);

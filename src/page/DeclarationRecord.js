@@ -123,7 +123,7 @@ export default class extends PureComponent {
         this.count = 1;
         this.timer = null;
         this.state = {
-            datas: [],
+            datas: fetchData,
         };
     }
     /* componentDidMount() {
@@ -136,13 +136,13 @@ export default class extends PureComponent {
     componentWillUnmount() {
         cancelAnimationFrame(this.timer);
     }*/
-    componentDidMount() {
+    /* componentDidMount() {
         InteractionManager.runAfterInteractions(() => {
             this.setState({
                 datas: fetchData,
             });
         });
-    }
+    }*/
     onEndReached() {
         // console.log('onEndReached');
     }

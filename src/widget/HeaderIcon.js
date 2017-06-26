@@ -7,7 +7,7 @@ export default class extends PureComponent {
         return (
             <TouchableOpacity
                 activeOpacity={this.props.activeOpacity || 0.7}
-                onPress={() => this.props.onPress()}
+                onPressIn={this.props.onPress}
             >
                 <View style={[theme.styles.headerIconStyle, this.props.style]}>
                     {this.props.children}

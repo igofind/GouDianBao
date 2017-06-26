@@ -17,6 +17,7 @@ import ContractList from '../page/ContractList';
 import Bell from '../widget/Bell';
 import EmptyIcon from '../widget/EmptyIcon';
 import MonthElecDetail from '../page/MonthElecDetail';
+import CompanyInfo from "../page/CompanyInfo";
 
 const TabScenes = TabNavigator({
     Home: {
@@ -113,8 +114,11 @@ const StackScenes = StackNavigator({
     MonthElecDetail: {
         screen: MonthElecDetail,
     },
+    CompanyInfo: {
+        screen: CompanyInfo,
+    },
 }, {
-    initialRouteName: 'Login',
+    initialRouteName: 'Main',
     headerMode: 'float',
     transitionConfig: () => ({
         screenInterpolator: CardStackStyleInterpolator.forHorizontal,
