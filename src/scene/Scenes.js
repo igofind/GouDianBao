@@ -1,5 +1,4 @@
 import React from 'react';
-import { StatusBar } from 'react-native';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import SimpleLineIcons from 'react-native-vector-icons/Octicons';
 import { StackNavigator, TabBarBottom, TabNavigator } from 'react-navigation';
@@ -67,7 +66,7 @@ const TabScenes = TabNavigator({
 }, {
     tabBarComponent: TabBarBottom,
     tabBarPosition: 'bottom',
-    lazy: false,
+    lazy: true,
     order: ['Home', 'Business', 'Calc', 'Mine'],
     initialRouteName: 'Home',
     activeBackgroundColor: '#fff',

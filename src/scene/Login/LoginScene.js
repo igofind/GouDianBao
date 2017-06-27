@@ -39,8 +39,8 @@ class LoginScene extends PureComponent {
             <View style={styles.body}>
                 <StatusBar
                     animated={false}
-                    backgroundColor="#fff"
-                    barStyle="dark-content"
+                    backgroundColor={'transparent'}
+                    barStyle={'dark-content'}
                     translucent={true}
                 />
                 <View style={styles.logoContainer} >
