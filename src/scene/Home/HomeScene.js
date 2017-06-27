@@ -17,7 +17,6 @@ class HomeScene extends PureComponent {
                 <StatusBar
                     animated={false}
                     backgroundColor="transparent"
-                    barStyle="light-content"
                     translucent={true}
                 />
                 <SplitView />
