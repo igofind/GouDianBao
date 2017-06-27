@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
     },
     elecLabel: {
-        fontSize: 16,
+        fontSize: 15,
         color: '#3a3a3a',
         textAlignVertical: 'center',
         textAlign: 'center',

@@ -77,7 +77,7 @@ const styles = StyleSheet.create({
     },
 });
 
-const fetchData = [
+const datas = [
     {
         data: [
             {
@@ -121,28 +121,11 @@ export default class extends PureComponent {
     constructor() {
         super();
         this.count = 1;
-        this.timer = null;
         this.state = {
-            datas: fetchData,
+            datas,
         };
     }
-    /* componentDidMount() {
-        this.timer = requestAnimationFrame(() => {
-            this.setState({
-                datas: fetchData,
-            });
-        });
-    }
-    componentWillUnmount() {
-        cancelAnimationFrame(this.timer);
-    }*/
-    /* componentDidMount() {
-        InteractionManager.runAfterInteractions(() => {
-            this.setState({
-                datas: fetchData,
-            });
-        });
-    }*/
+
     onEndReached() {
         // console.log('onEndReached');
     }
@@ -207,15 +190,13 @@ export default class extends PureComponent {
     }
 
     render() {
-        const datas = this.state.datas;
+        const list = this.state.datas;
         return (
             <View style={styles.container} >
                 <SectionList
                     renderItem={({ item }) => this.renderItem(item)}
-                    initialNumToRender={1}
                     renderSectionHeader={({ section }) => this.renderSectionHeader(section)}
                     keyExtractor={(item, index) => `record-${index}`}
-                    ItemSeparatorComponent={SplitView}
                     refreshing={false}
                     onRefresh={() => this.doRefresh()}
                     ListFooterComponent={
@@ -225,7 +206,7 @@ export default class extends PureComponent {
                         </Text>)
                     }
                     onEndReached={() => this.onEndReached()}
-                    sections={datas}
+                    sections={list}
                 />
             </View>
         );

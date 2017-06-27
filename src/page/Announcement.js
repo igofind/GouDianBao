@@ -250,29 +250,9 @@ export default class extends PureComponent {
 
     constructor() {
         super();
-        this.timer = null;
         this.state = {
-            html: '',
+            html: tradeDetailText,
         };
-    }
-
-    /* componentDidMount() {
-        this.timer = requestAnimationFrame(() => {
-            this.setState({
-                html: tradeDetailText,
-            });
-        });
-    }
-
-    componentWillUnmount() {
-        cancelAnimationFrame(this.timer);
-    }*/
-    componentDidMount() {
-        InteractionManager.runAfterInteractions(() => {
-            this.setState({
-                html: tradeDetailText,
-            });
-        });
     }
 
     render() {

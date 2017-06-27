@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import { InteractionManager, Text, View, StyleSheet, Image, ScrollView, TouchableOpacity } from 'react-native';
+import { InteractionManager, Text, View, StyleSheet, Image, ScrollView, TouchableOpacity, FlatList } from 'react-native';
 import Entypo from 'react-native-vector-icons/Entypo';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import SplitView from '../widget/SplitView';
@@ -175,24 +175,26 @@ class ListItem extends PureComponent {
 const list = (<ScrollView style={styles.container}>
     <SplitView style={{ height: 12 }} />
     <Header title="执行中的合同" />
-    {execContList.map(item => (
-        <ListItem
+    <FlatList
+        data={execContList}
+        keyExtractor={item => item.num}
+        renderItem={({ item }) => (<ListItem
             image={item.image}
             title={item.title}
             num={item.num}
-            key={item.key}
-        />
-    ))}
+        />)}
+    />
     <SplitView style={{ height: 12 }} />
     <Header title="已执行完成的合同" />
-    {completeContList.map(item => (
-        <ListItem
+    <FlatList
+        data={completeContList}
+        keyExtractor={item => item.num}
+        renderItem={({ item }) => (<ListItem
             image={item.image}
             title={item.title}
             num={item.num}
-            key={item.key}
-        />
-    ))}
+        />)}
+    />
     <SplitView />
 </ScrollView>);
 
@@ -212,14 +214,6 @@ export default class extends PureComponent {
             list,
         };
     }
-
-    /* componentDidMount() {
-        InteractionManager.runAfterInteractions(() => {
-            this.setState({
-                list,
-            });
-        });
-    }*/
 
     render() {
         return (this.state.list);

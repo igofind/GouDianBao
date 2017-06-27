@@ -226,30 +226,10 @@ export default class extends PureComponent {
 
     constructor() {
         super();
-        this.timer = null;
         this.state = {
             list,
         };
     }
-    /* componentDidMount() {
-        this.timer = requestAnimationFrame(() => {
-            this.setState({
-                list,
-            });
-        });
-    }
-    componentWillUnmount() {
-        cancelAnimationFrame(this.timer);
-    }*/
-
-    componentDidMount() {
-        /* InteractionManager.runAfterInteractions(() => {
-            this.setState({
-                list,
-            });
-        });*/
-    }
-
     render() {
         return (this.state.list);
     }

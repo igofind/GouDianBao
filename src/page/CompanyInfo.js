@@ -5,7 +5,7 @@ import theme from '../style/theme';
 import ArrowLeft from '../widget/ArrowLeft';
 import HeaderBtn from '../widget/HeaderBtn';
 import SplitView from '../widget/SplitView';
-import PickerCell from "../widget/PickerCell";
+import PickerCell from '../widget/PickerCell';
 
 const styles = StyleSheet.create({
     inputItem: {

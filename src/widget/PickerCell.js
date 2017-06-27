@@ -16,7 +16,7 @@ const styles = StyleSheet.create({
     label: {
         color: '#3a3a3a',
         textAlign: 'center',
-        fontSize: 16,
+        fontSize: 15,
         marginLeft: theme.marginLeft,
         textAlignVertical: 'center',
     },
