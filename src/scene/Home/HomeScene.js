@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import { InteractionManager, StatusBar, Text, View } from 'react-native';
-import SplitView from '../../widget/SplitView';
 import IconCell from '../../widget/IconCell';
+import SplitView from '../../widget/SplitView';
 
 class HomeScene extends PureComponent {
 
