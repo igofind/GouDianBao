@@ -132,10 +132,11 @@ const StackScenes = StackNavigator({
     }),
 });
 
-export default () => (<StackScenes
+export default StackScenes;
+/* export default () => (<StackScenes
     onNavigationStateChange={(prevState, currentState, action) => {
         if (action.type.toLowerCase() === 'navigation/navigate') {
-            /* // tabNavigator 页面改变时，改变StatusBar
+            /!* // tabNavigator 页面改变时，改变StatusBar
             switch (action.routeName) {
                 case 'Home':
                     StatusBar.setBackgroundColor(theme.homeStatusBarBC, false);
@@ -154,20 +155,20 @@ export default () => (<StackScenes
                     // 并在该screen中加上StatusBar组件
                     StatusBar.setBackgroundColor(theme.homeStatusBarBC, false);
                     break;
-            }*/
+            }*!/
         } else if (action.type.toLowerCase() === 'navigation/back') {
             if (currentState.routes[currentState.index].routeName === 'Login') {
                 // StatusBar.setBackgroundColor('#fff', false); // TODO 登录后，是不能再返回登录页面的，除非是退出操作
                 StatusBar.setBarStyle('light-content', false);
             } else {
-                /* // 由'我的'tab中进入的页面，返回后，设置StatusBar的颜色
+                /!* // 由'我的'tab中进入的页面，返回后，设置StatusBar的颜色
                 const minePages = ['DeclarationRecord', 'MonthElecDetail', 'ContractList', 'CompanyInfo', '', ''];
                 if (prevState.routes.length > 2 && minePages.includes(prevState.routes[2].routeName)) {
                     StatusBar.setBackgroundColor(theme.mineStatusBarBC, false);
                 } else {
                     StatusBar.setBackgroundColor(theme.homeStatusBarBC, false);
-                }*/
+                }*!/
             }
         }
     }}
-/>);
+/>);*/

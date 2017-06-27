@@ -1,8 +1,8 @@
 import React, { PureComponent } from 'react';
-import { Image, View, StyleSheet, StatusBar } from 'react-native';
-import InputItem from './LoginInputItem';
+import { Image, InteractionManager, StatusBar, StyleSheet, View } from 'react-native';
 import LoginButton from './LoginButton';
 import LoginCheckBox from './LoginCheckBox';
+import InputItem from './LoginInputItem';
 
 const styles = StyleSheet.create({
     body: {
@@ -29,8 +29,9 @@ const styles = StyleSheet.create({
 class LoginScene extends PureComponent {
 
     doLogin() {
-        const { navigate } = this.props.navigation;
-        navigate('Main');
+        InteractionManager.runAfterInteractions(() => {
+            this.props.navigation.navigate('Main');
+        });
     }
 
     render() {
