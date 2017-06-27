@@ -77,7 +77,6 @@ const styles = StyleSheet.create({
     mineHeaderStyle: {
         ...navHeaderStyle,
         backgroundColor: '#00aaee',
-        height: 20,
     },
     mineHeaderTitleStyle: {
         ...headerTitleStyle,

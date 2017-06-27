@@ -23,23 +23,11 @@ class HomeScene extends PureComponent {
                 <IconCell onPress={() => this.navigate('Announcement')}>
                     <Text>交易公告详情</Text>
                 </IconCell>
-                <IconCell onPress={() => this.navigate('DeclarationRecord')}>
-                    <Text>申报记录</Text>
-                </IconCell>
                 <IconCell onPress={() => this.navigate('ContractExec')}>
                     <Text>合同执行情况</Text>
                 </IconCell>
-                <IconCell onPress={() => this.navigate('ContractList')}>
-                    <Text>我的合同</Text>
-                </IconCell>
                 <IconCell onPress={() => this.navigate('ContractDetail')}>
                     <Text>合同详情</Text>
-                </IconCell>
-                <IconCell onPress={() => this.navigate('MonthElecDetail')}>
-                    <Text>成交及用电</Text>
-                </IconCell>
-                <IconCell onPress={() => this.navigate('CompanyInfo')}>
-                    <Text>企业信息</Text>
                 </IconCell>
                 <IconCell onPress={() => this.navigate('DealList')}>
                     <Text>市场成交情况</Text>

@@ -63,11 +63,6 @@ const TabScenes = TabNavigator({
     },
     Mine: {
         screen: MineScene,
-        navigationOptions: {
-            header: null,
-            tabBarLabel: '我的',
-            tabBarIcon: ({ tintColor }) => (<FontAwesome name="user-o" size={theme.tabIconSize} color={tintColor} />),
-        },
     },
 }, {
     tabBarComponent: TabBarBottom,
@@ -130,7 +125,7 @@ const StackScenes = StackNavigator({
         screen: ContractDetail,
     },
 }, {
-    initialRouteName: 'Main',
+    initialRouteName: 'Login',
     headerMode: 'float',
     transitionConfig: () => ({
         screenInterpolator: CardStackStyleInterpolator.forHorizontal,
@@ -170,11 +165,21 @@ export default () => (<StackScenes
                     });
                     break;
             }
-        } else if (action.type.toLowerCase() === 'navigation/back'
-        && currentState.routes[currentState.index].routeName === 'Login') {
-            InteractionManager.runAfterInteractions(() => {
-                StatusBar.setBackgroundColor('#fff', false); // TODO 登录后，是不能再返回登录页面的，除非是退出操作
-            });
+        } else if (action.type.toLowerCase() === 'navigation/back') {
+            if (currentState.routes[currentState.index].routeName === 'Login') {
+                InteractionManager.runAfterInteractions(() => {
+                    StatusBar.setBackgroundColor('#fff', false); // TODO 登录后，是不能再返回登录页面的，除非是退出操作
+                });
+            } else {
+                // 由'我的'tab中进入的页面，返回后，设置StatusBar的颜色
+                const minePages = ['DeclarationRecord', 'MonthElecDetail', 'ContractList', 'CompanyInfo', '', ''];
+                const prevPage = prevState.routes[1].routeName;
+                if (minePages.includes(prevPage) > -1) {
+                    InteractionManager.runAfterInteractions(() => {
+                        StatusBar.setBackgroundColor(theme.mineStatusBarBC, false);
+                    });
+                }
+            }
         }
     }}
 />);

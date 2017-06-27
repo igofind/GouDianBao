@@ -1,8 +1,11 @@
 import React, { PureComponent } from 'react';
-import {Text, View, StyleSheet, Image, StatusBar} from 'react-native';
+import { Text, View, StyleSheet, Image } from 'react-native';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import IconCell from '../../widget/IconCell';
 import SplitView from '../../widget/SplitView';
 import Bell from '../../widget/Bell';
+import theme from '../../style/theme';
+import EmptyIcon from '../../widget/EmptyIcon';
 
 const styles = StyleSheet.create({
     container: {
@@ -10,8 +13,7 @@ const styles = StyleSheet.create({
     },
     header: {
         flexDirection: 'column',
-        height: 120 + StatusBar.currentHeight,
-        paddingTop: StatusBar.currentHeight,
+        height: 75,
         backgroundColor: '#00aaee',
     },
     iconLine: {
@@ -32,13 +34,21 @@ const styles = StyleSheet.create({
 });
 
 class MineScene extends PureComponent {
+
+    static navigationOptions = {
+        headerStyle: theme.styles.mineHeaderStyle,
+        headerLeft: <EmptyIcon />,
+        // headerRight: <Bell onPress={() => { }} style={{ justifyContent: 'flex-end' }} />,
+        headerRight: <Bell onPress={() => { }} />,
+        tabBarLabel: '我的',
+        tabBarIcon: ({ tintColor }) => (<FontAwesome name="user-o" size={theme.tabIconSize} color={tintColor} />),
+    };
+
     render() {
+        const { navigate } = this.props.navigation;
         return (
             <View style={styles.container}>
                 <View style={styles.header} >
-                    <View style={styles.iconLine} >
-                        <Bell onPress={() => {}} />
-                    </View>
                     <View style={{ flexDirection: 'row' }}>
                         <View style={styles.avatar}>
                             <Image
@@ -58,28 +68,28 @@ class MineScene extends PureComponent {
                 </View>
                 <SplitView style={{ height: 12 }} />
                 <IconCell
-                    onPress={() => {}}
+                    onPress={() => { navigate('DeclarationRecord'); }}
                     image={require('../../image/mine_record.png')}
 
                 >
                     <Text>申报记录</Text>
                 </IconCell>
                 <IconCell
-                    onPress={() => {}}
+                    onPress={() => { navigate('MonthElecDetail'); }}
                     image={require('../../image/mine_elec.png')}
 
                 >
                     <Text>成交及用电</Text>
                 </IconCell>
                 <IconCell
-                    onPress={() => {}}
+                    onPress={() => { navigate('ContractList'); }}
                     image={require('../../image/mine_contract.png')}
 
                 >
                     <Text>我的合同</Text>
                 </IconCell>
                 <IconCell
-                    onPress={() => {}}
+                    onPress={() => { navigate('CompanyInfo'); }}
                     image={require('../../image/mine_company.png')}
 
                 >
