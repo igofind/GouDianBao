@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import { Text, View, StyleSheet, Image } from 'react-native';
+import { InteractionManager, Text, View, StyleSheet, Image } from 'react-native';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import IconCell from '../../widget/IconCell';
 import SplitView from '../../widget/SplitView';
@@ -44,8 +44,13 @@ class MineScene extends PureComponent {
         tabBarIcon: ({ tintColor }) => (<FontAwesome name="user-o" size={theme.tabIconSize} color={tintColor} />),
     };
 
+    navigate(...args) {
+        InteractionManager.runAfterInteractions(() => {
+            this.props.navigation.navigate(...args);
+        });
+    }
+
     render() {
-        const { navigate } = this.props.navigation;
         return (
             <View style={styles.container}>
                 <View style={styles.header} >
@@ -68,28 +73,28 @@ class MineScene extends PureComponent {
                 </View>
                 <SplitView style={{ height: 12 }} />
                 <IconCell
-                    onPress={() => { navigate('DeclarationRecord'); }}
+                    onPress={() => { this.navigate('DeclarationRecord'); }}
                     image={require('../../image/mine_record.png')}
 
                 >
                     <Text>申报记录</Text>
                 </IconCell>
                 <IconCell
-                    onPress={() => { navigate('MonthElecDetail'); }}
+                    onPress={() => { this.navigate('MonthElecDetail'); }}
                     image={require('../../image/mine_elec.png')}
 
                 >
                     <Text>成交及用电</Text>
                 </IconCell>
                 <IconCell
-                    onPress={() => { navigate('ContractList'); }}
+                    onPress={() => { this.navigate('ContractList'); }}
                     image={require('../../image/mine_contract.png')}
 
                 >
                     <Text>我的合同</Text>
                 </IconCell>
                 <IconCell
-                    onPress={() => { navigate('CompanyInfo'); }}
+                    onPress={() => { this.navigate('CompanyInfo'); }}
                     image={require('../../image/mine_company.png')}
 
                 >

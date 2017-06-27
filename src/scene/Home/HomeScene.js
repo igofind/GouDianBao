@@ -1,9 +1,27 @@
 import React, { PureComponent } from 'react';
-import { InteractionManager, StatusBar, Text, View } from 'react-native';
-import SplitView from '../../widget/SplitView';
+import { BackHandler, InteractionManager, Platform, StatusBar, Text, View } from 'react-native';
 import IconCell from '../../widget/IconCell';
+import SplitView from '../../widget/SplitView';
 
 class HomeScene extends PureComponent {
+
+    constructor() {
+        super();
+        this.listener = null;
+    }
+    componentDidMount() {
+        if (Platform.OS === 'android') {
+            this.listener = BackHandler.addEventListener('hardwareBackPress', () => this.backButtonHandler());
+        }
+    }
+
+    componentWillUnmount() {
+        BackHandler.removeEventListener(this.listener);
+    }
+
+    backButtonHandler(...args) {
+        console.log(...args);
+    }
 
     navigate(...args) {
         InteractionManager.runAfterInteractions(() => {

@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import SplashScreen from 'react-native-splash-screen';
 import StackScenes from './scene/Scenes';
 
-class Test extends PureComponent {
+export default class extends PureComponent {
 
     componentDidMount() {
         // do stuff while splash screen is shown
@@ -14,5 +14,3 @@ class Test extends PureComponent {
         return <StackScenes />;
     }
 }
-
-export default Test;

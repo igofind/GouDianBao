@@ -44,6 +44,15 @@ const styles = StyleSheet.create({
     },
 });
 
+const list = [
+    { guid: 'sdjfiosajfoiji', month: '2017年6月' },
+    { guid: 'sdjfiosajsssji', month: '2017年5月' },
+    { guid: 'sdjaaosajfoiji', month: '2017年4月' },
+    { guid: 'sdjaa22jfoiji3', month: '2017年3月' },
+    { guid: 'sdjaaos11iji13', month: '2017年2月' },
+    { guid: 'sdja45ajfoiji2', month: '2017年1月' },
+];
+
 class ListItem extends PureComponent {
     render() {
         const item = this.props.item;
@@ -73,22 +82,22 @@ export default class extends PureComponent {
         headerRight: <EmptyIcon />,
     });
 
+    constructor() {
+        super();
+        this.state = {
+            list,
+        };
+    }
+
     render() {
-        const datas = [
-            { guid: 'sdjfiosajfoiji', month: '2017年6月' },
-            { guid: 'sdjfiosajsssji', month: '2017年5月' },
-            { guid: 'sdjaaosajfoiji', month: '2017年4月' },
-            { guid: 'sdjaa22jfoiji3', month: '2017年3月' },
-            { guid: 'sdjaaos11iji13', month: '2017年2月' },
-            { guid: 'sdja45ajfoiji2', month: '2017年1月' },
-        ];
+        const data = this.state.list;
         return (
             <View style={styles.container}>
                 <FlatList
                     renderItem={({ item }) => <ListItem item={item} />}
                     keyExtractor={item => item.guid}
                     ListHeaderComponent={<SearchBar title="搜索" />}
-                    data={datas}
+                    data={data}
                 />
             </View>
         );

@@ -1,5 +1,5 @@
 import React from 'react';
-import { InteractionManager, StatusBar } from 'react-native';
+import { StatusBar } from 'react-native';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import SimpleLineIcons from 'react-native-vector-icons/Octicons';
 import { StackNavigator, TabBarBottom, TabNavigator } from 'react-navigation';
@@ -135,50 +135,38 @@ const StackScenes = StackNavigator({
 export default () => (<StackScenes
     onNavigationStateChange={(prevState, currentState, action) => {
         if (action.type.toLowerCase() === 'navigation/navigate') {
-            // tabNavigator 页面改变时，改变StatusBar
+            /* // tabNavigator 页面改变时，改变StatusBar
             switch (action.routeName) {
                 case 'Home':
-                    InteractionManager.runAfterInteractions(() => {
-                        StatusBar.setBackgroundColor(theme.homeStatusBarBC, false);
-                    });
+                    StatusBar.setBackgroundColor(theme.homeStatusBarBC, false);
                     break;
                 case 'Business':
-                    InteractionManager.runAfterInteractions(() => {
-                        StatusBar.setBackgroundColor(theme.businessStatusBarBC, false);
-                    });
+                    StatusBar.setBackgroundColor(theme.businessStatusBarBC, false);
                     break;
                 case 'Calc':
-                    InteractionManager.runAfterInteractions(() => {
-                        StatusBar.setBackgroundColor(theme.calcStatusBarBC, false);
-                    });
+                    StatusBar.setBackgroundColor(theme.calcStatusBarBC, false);
                     break;
                 case 'Mine':
-                    InteractionManager.runAfterInteractions(() => {
-                        StatusBar.setBackgroundColor(theme.mineStatusBarBC, false);
-                    });
+                    StatusBar.setBackgroundColor(theme.mineStatusBarBC, false);
                     break;
                 default:
                     // 与initialRouteName的routeName保持一致
                     // 并在该screen中加上StatusBar组件
-                    InteractionManager.runAfterInteractions(() => {
-                        StatusBar.setBackgroundColor(theme.homeStatusBarBC, false);
-                    });
+                    StatusBar.setBackgroundColor(theme.homeStatusBarBC, false);
                     break;
-            }
+            }*/
         } else if (action.type.toLowerCase() === 'navigation/back') {
             if (currentState.routes[currentState.index].routeName === 'Login') {
-                InteractionManager.runAfterInteractions(() => {
-                    StatusBar.setBackgroundColor('#fff', false); // TODO 登录后，是不能再返回登录页面的，除非是退出操作
-                });
+                // StatusBar.setBackgroundColor('#fff', false); // TODO 登录后，是不能再返回登录页面的，除非是退出操作
+                StatusBar.setBarStyle('light-content', false);
             } else {
-                // 由'我的'tab中进入的页面，返回后，设置StatusBar的颜色
+                /* // 由'我的'tab中进入的页面，返回后，设置StatusBar的颜色
                 const minePages = ['DeclarationRecord', 'MonthElecDetail', 'ContractList', 'CompanyInfo', '', ''];
-                const prevPage = prevState.routes[1].routeName;
-                if (minePages.includes(prevPage) > -1) {
-                    InteractionManager.runAfterInteractions(() => {
-                        StatusBar.setBackgroundColor(theme.mineStatusBarBC, false);
-                    });
-                }
+                if (prevState.routes.length > 2 && minePages.includes(prevState.routes[2].routeName)) {
+                    StatusBar.setBackgroundColor(theme.mineStatusBarBC, false);
+                } else {
+                    StatusBar.setBackgroundColor(theme.homeStatusBarBC, false);
+                }*/
             }
         }
     }}

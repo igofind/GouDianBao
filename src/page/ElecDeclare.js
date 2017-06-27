@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
     },
     elecLabel: {
-        fontSize: 16,
+        fontSize: 15,
         color: '#3a3a3a',
         textAlignVertical: 'center',
         textAlign: 'center',
@@ -130,6 +130,7 @@ export default class extends PureComponent {
     });
 
     render() {
+        const { navigate } = this.props.navigation;
         return (
             <View style={styles.container} >
                 <SplitView style={{ height: 12 }} />
@@ -157,7 +158,7 @@ export default class extends PureComponent {
                 <RefLine left="" right="执行电量xxxx兆瓦时" />
                 <RefLine left="" right="超欠电量xxxx兆瓦时" />
                 <RefLine left="7月年度分解电量:" right="xxxx兆瓦时" />
-                <TouchableOpacity activeOpacity={0.6} onPressIn={() => {}} >
+                <TouchableOpacity activeOpacity={0.6} onPressIn={() => { navigate('Announcement'); }} >
                     <RefLine left="7月交易告:" right="2017年7月月度电力直接交易公告" underline={true} />
                 </TouchableOpacity>
             </View>

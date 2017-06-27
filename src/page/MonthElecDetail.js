@@ -90,6 +90,38 @@ class ListItem extends PureComponent {
     }
 }
 
+const list = [
+    {
+        data: [
+            { name: '申报电量', num: 2017 },
+            { name: '成交电量', num: 2007 },
+        ],
+        title: '6月份',
+        key: 'month-6',
+    },
+    {
+        data: [
+            { name: '申报电量', num: 2017 },
+            { name: '成交电量', num: 2007 },
+            { name: '总合同电量', num: 2017 },
+            { name: '实际执行电量', num: 2007 },
+            { name: '考核费用', num: 2017 },
+            { name: '利润', num: 2007 },
+        ],
+        title: '5月份',
+        key: 'month-5',
+    },
+    {
+        data: [
+            { name: '申报电量', num: 2017 },
+            { name: '成交电量', num: 2007 },
+            { name: '总合同电量', num: 2017 },
+        ],
+        title: '4月份',
+        key: 'month-4',
+    },
+];
+
 export default class extends PureComponent {
 
     static navigationOptions = ({ navigation }) => ({
@@ -99,44 +131,23 @@ export default class extends PureComponent {
         headerLeft: <ArrowLeft onPress={() => { navigation.goBack(null); }} />,
         headerRight: <EmptyIcon />,
     });
+
+    constructor() {
+        super();
+        this.state = {
+            list,
+        };
+    }
+
     render() {
+        const datas = this.state.list;
         return (
             <View style={styles.container} >
                 <SectionList
                     renderItem={({ item, index }) => <ListItem index={index} item={item} onPress={() => {}} />}
                     keyExtractor={(item, index) => (index)}
                     renderSectionHeader={({ section }) => <Header title={section.title} />}
-                    sections={[
-                        {
-                            data: [
-                                { name: '申报电量', num: 2017 },
-                                { name: '成交电量', num: 2007 },
-                            ],
-                            title: '6月份',
-                            key: 'month-6',
-                        },
-                        {
-                            data: [
-                                { name: '申报电量', num: 2017 },
-                                { name: '成交电量', num: 2007 },
-                                { name: '总合同电量', num: 2017 },
-                                { name: '实际执行电量', num: 2007 },
-                                { name: '考核费用', num: 2017 },
-                                { name: '利润', num: 2007 },
-                            ],
-                            title: '5月份',
-                            key: 'month-5',
-                        },
-                        {
-                            data: [
-                                { name: '申报电量', num: 2017 },
-                                { name: '成交电量', num: 2007 },
-                                { name: '总合同电量', num: 2017 },
-                            ],
-                            title: '4月份',
-                            key: 'month-4',
-                        },
-                    ]}
+                    sections={datas}
                 />
             </View>
         );
