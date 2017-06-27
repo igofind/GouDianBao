@@ -24,6 +24,7 @@ export default class extends PureComponent {
                 }
 
                 if (this.lastBackButtonPress + 2000 >= new Date().getTime()) {
+                    this.backButtonListener.remove();
                     BackHandler.exitApp();
                     return true; // 不触发默认处理
                 }

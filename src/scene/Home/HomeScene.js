@@ -15,8 +15,8 @@ class HomeScene extends PureComponent {
         return (
             <View style={{ flex: 1, flexDirection: 'column' }}>
                 <StatusBar
-                    backgroundColor="#000"
-                    barStyle="light-content"
+                    animated={false}
+                    backgroundColor="transparent"
                     translucent={true}
                 />
                 <SplitView />

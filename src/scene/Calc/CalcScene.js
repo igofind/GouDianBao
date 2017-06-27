@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import { View, StyleSheet, StatusBar } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import SplitView from '../../widget/SplitView';
 import CalcSceneItem from './CalcSceneItem';
 
