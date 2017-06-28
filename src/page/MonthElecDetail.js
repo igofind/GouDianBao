@@ -135,8 +135,22 @@ export default class extends PureComponent {
     constructor() {
         super();
         this.state = {
-            list,
+            list: [],
         };
+    }
+
+    componentDidMount() {
+        const timer = requestAnimationFrame(() => {
+            this.fetchData();
+            cancelAnimationFrame(timer);
+        });
+    }
+
+    fetchData() {
+        // TODO 网络请求数据
+        this.setState({
+            list,
+        });
     }
 
     render() {

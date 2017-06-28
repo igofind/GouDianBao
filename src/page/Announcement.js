@@ -251,10 +251,20 @@ export default class extends PureComponent {
     constructor() {
         super();
         this.state = {
-            html: tradeDetailText,
+            html: '',
         };
     }
-
+    componentDidMount() {
+        const timer = requestAnimationFrame(() => {
+            this.fetchData();
+            cancelAnimationFrame(timer);
+        });
+    }
+    fetchData() {
+        this.setState({
+            html: tradeDetailText,
+        });
+    }
     render() {
         return (
             <WebView source={{ html: this.state.html }} />

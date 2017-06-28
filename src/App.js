@@ -37,7 +37,8 @@ export default class extends PureComponent {
     }
 
     componentWillUnmount() {
-        this.backButtonListener.remove();
+        // this.backButtonListener.remove();
+        BackHandler.removeEventListener('hardwareBackPress', this.backButtonListener);
     }
 
     render() {

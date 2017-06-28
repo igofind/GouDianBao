@@ -29,8 +29,11 @@ const styles = StyleSheet.create({
 class LoginScene extends PureComponent {
 
     doLogin() {
-        InteractionManager.runAfterInteractions(() => {
+        // TODO 登录操作
+
+        const timer = requestAnimationFrame(() => {
             this.props.navigation.navigate('Main');
+            cancelAnimationFrame(timer);
         });
     }
 

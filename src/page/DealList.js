@@ -85,8 +85,21 @@ export default class extends PureComponent {
     constructor() {
         super();
         this.state = {
-            list,
+            list: [],
         };
+    }
+
+    componentDidMount() {
+        const timer = requestAnimationFrame(() => {
+            this.fetchData();
+            cancelAnimationFrame(timer);
+        });
+    }
+
+    fetchData() {
+        this.setState({
+            list,
+        });
     }
 
     render() {

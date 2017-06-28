@@ -45,10 +45,16 @@ class InputItem extends Component {
     }
 
     shouldComponentUpdate(nextProps, nextState) {
-        if (nextProps.editable !== this.editable) {
-            this.editable = nextProps.editable;
+        if (nextProps.editable !== this.editable || this.value !== nextProps.value) {
+            if (nextProps.editable !== this.editable) {
+                this.editable = nextProps.editable;
+            }
+            if (this.value !== nextProps.value && this.value === null) {
+                this.value = nextProps.value;
+            }
             return true;
         }
+
         return false;
     }
 
@@ -70,7 +76,7 @@ class InputItem extends Component {
         return (<Text style={styles.textInput}>{this.value}</Text>);
     }
     render() {
-        if (this.value === null) {
+        if (this.value === null && this.props.value !== undefined) {
             this.value = this.props.value;
         }
         return (
@@ -109,26 +115,53 @@ export default class extends PureComponent {
         super();
         this.state = {
             editable: false,
+            info: {},
         };
     }
 
+    componentDidMount() {
+        const timer = requestAnimationFrame(() => {
+            this.fetchData();
+            cancelAnimationFrame(timer);
+        });
+    }
+
+    fetchData() {
+        const info = {
+            qyqc: '北京中恒愽瑞数字电力科技有限公司',
+            qyfr: '周庆捷',
+            qyxz: '高新技术',
+            qydz: '西二旗大街领袖新硅谷',
+            zcdz: '海淀区分局',
+            swdjh: '123456789',
+            yxhm: '高新技术',
+            yxxth: '3456789',
+            gddy: '220',
+            gkjld: '123456789',
+        };
+        this.setState({
+            info,
+        });
+    }
+
     render() {
+        const info = this.state.info;
         const { state } = this.props.navigation;
         const editable = state.params && state.params.editable ? state.params.editable : false;
         return (
             <View style={styles.container} >
                 <SplitView style={{ height: 12 }} />
-                <InputItem label="企业全称" editable={editable} value="北京中恒愽瑞数字电力科技有限公司" />
-                <InputItem label="企业法人" editable={editable} value="周庆捷" />
-                <InputItem label="企业性质" editable={editable} value="高新技术" />
-                <InputItem label="企业地址" editable={editable} value="西二旗大街领袖新硅谷" />
-                <PickerCell label="注册地址" value="海淀区分局" />
-                <InputItem label="税务登记号" editable={editable} value="123456789" />
+                <InputItem label="企业全称" editable={editable} value={info.qyqc} />
+                <InputItem label="企业法人" editable={editable} value={info.qyfr} />
+                <InputItem label="企业性质" editable={editable} value={info.qyxz} />
+                <InputItem label="企业地址" editable={editable} value={info.qydz} />
+                <PickerCell label="注册地址" value={info.zcdz} />
+                <InputItem label="税务登记号" editable={editable} value={info.swdjh} />
                 <SplitView style={{ height: 12 }} />
-                <InputItem label="营销户名" editable={editable} value="高新技术" />
-                <InputItem label="营销系统号" editable={editable} value="3456789" />
-                <PickerCell label="供电电压" value="220" />
-                <InputItem label="关口计量点" editable={editable} value="123456789" />
+                <InputItem label="营销户名" editable={editable} value={info.yxhm} />
+                <InputItem label="营销系统号" editable={editable} value={info.yxxth} />
+                <PickerCell label="供电电压" value={info.gddy} />
+                <InputItem label="关口计量点" editable={editable} value={info.gkjld} />
             </View>
         );
     }

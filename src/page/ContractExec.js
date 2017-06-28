@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import { InteractionManager, Text, View, StyleSheet, Image, ScrollView, TouchableOpacity } from 'react-native';
+import { Text, View, StyleSheet, Image, ScrollView, TouchableOpacity, SectionList } from 'react-native';
 import Entypo from 'react-native-vector-icons/Entypo';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -98,10 +98,13 @@ const styles = StyleSheet.create({
 class Header extends PureComponent {
     render() {
         return (
-            <View style={styles.header}>
-                <Text style={styles.headerText}>
-                    {this.props.title}
-                </Text>
+            <View>
+                <SplitView style={{ height: 12 }} />
+                <View style={styles.header}>
+                    <Text style={styles.headerText}>
+                        {this.props.title}
+                    </Text>
+                </View>
             </View>
         );
     }
@@ -109,7 +112,8 @@ class Header extends PureComponent {
 
 class ListItem extends PureComponent {
     render() {
-        const progress = this.props.used / this.props.total;
+        const item = this.props.item;
+        const progress = item.used / item.total;
         let progressColor = '#6CAEF7';
         if (progress > 1) {
             progressColor = '#F15A4A';
@@ -126,21 +130,21 @@ class ListItem extends PureComponent {
             >
                 <View style={styles.listItem}>
                     <View style={styles.itemImg}>
-                        <Image source={this.props.image} style={styles.image} />
+                        <Image source={item.image} style={styles.image} />
                     </View>
                     <View style={styles.itemBody} >
                         <View style={styles.titleLine} >
-                            <Text style={styles.title}>{this.props.title}</Text>
+                            <Text style={styles.title}>{item.title}</Text>
                         </View>
                         <View style={styles.numLine} >
                             <FontAwesome name="list-ol" size={fontSize} color={color} />
-                            <Text style={{ color, fontSize, marginLeft: textMarginIcon }}>{this.props.num}</Text>
+                            <Text style={{ color, fontSize, marginLeft: textMarginIcon }}>{item.num}</Text>
                             <FontAwesome name="building-o" size={fontSize} color={color} style={{ marginLeft: 20 }} />
-                            <Text style={{ color, fontSize, marginLeft: textMarginIcon }}>{this.props.elecType}</Text>
+                            <Text style={{ color, fontSize, marginLeft: textMarginIcon }}>{item.elecType}</Text>
                         </View>
                         <View style={styles.timeLine} >
                             <Ionicons name="md-time" size={fontSize} color={color} />
-                            <Text style={{ color, fontSize, marginLeft: textMarginIcon }}>{this.props.time}</Text>
+                            <Text style={{ color, fontSize, marginLeft: textMarginIcon }}>{item.time}</Text>
                         </View>
                         <View style={styles.bar} >
                             <ProgressBar
@@ -155,8 +159,8 @@ class ListItem extends PureComponent {
                             />
                         </View>
                         <View style={styles.elecLine} >
-                            <Text style={{ color: progressColor }}>{this.props.used}</Text>
-                            <Text> / {this.props.total}千瓦时</Text>
+                            <Text style={{ color: progressColor }}>{item.used}</Text>
+                            <Text> / {item.total}千瓦时</Text>
                         </View>
 
                     </View>
@@ -169,50 +173,6 @@ class ListItem extends PureComponent {
     }
 }
 
-const list = (<ScrollView style={styles.container}>
-    <SplitView style={{ height: 12 }} />
-    <Header title="执行中的合同" />
-    <ListItem
-        image={require('../image/contract_dayonghu.png')}
-        title="2017年广东电力大用户与发电企..."
-        num="10008510"
-        elecType="乡村居民生活用电"
-        time="2017.06.01 - 2017.09.01"
-        used={3000}
-        total={10000}
-    />
-    <ListItem
-        image={require('../image/contract_daili.png')}
-        title="2017年能源代理合同"
-        num="10001321"
-        elecType="乡村居民生活用电"
-        time="2017.06.01 - 2017.09.01"
-        used={12000}
-        total={10000}
-    />
-    <SplitView style={{ height: 12 }} />
-    <Header title="已执行完成的合同" />
-    <ListItem
-        image={require('../image/contract_dayonghu.png')}
-        title="2017年广东电力大用户与发电企..."
-        num="10006221"
-        elecType="乡村居民生活用电"
-        time="2017.06.01 - 2017.09.01"
-        used={8000}
-        total={10000}
-    />
-
-    <ListItem
-        image={require('../image/contract_daili.png')}
-        title="2017年能源代理合同"
-        num="10008231"
-        elecType="乡村居民生活用电"
-        time="2017.06.01 - 2017.09.01"
-        used={10000}
-        total={10000}
-    />
-    <SplitView />
-</ScrollView>);
 
 export default class extends PureComponent {
 
@@ -227,10 +187,85 @@ export default class extends PureComponent {
     constructor() {
         super();
         this.state = {
-            list,
+            list: [],
         };
     }
+
+    componentDidMount() {
+        const timer = requestAnimationFrame(() => {
+            this.fetchData();
+            cancelAnimationFrame(timer);
+        });
+    }
+
+    fetchData() {
+        const list = [
+            {
+                data:
+                [
+                    {
+                        image: require('../image/contract_dayonghu.png'),
+                        title: '2017年广东电力大用户与发电企...',
+                        num: '10008510',
+                        elecType: '乡村居民生活用电',
+                        time: '2017.06.01 - 2017.09.01',
+                        used: 3000,
+                        total: 10000,
+                    },
+                    {
+                        image: require('../image/contract_daili.png'),
+                        title: '2017年能源代理合同',
+                        num: '10001321',
+                        elecType: '乡村居民生活用电',
+                        time: '2017.06.01 - 2017.09.01',
+                        used: 12000,
+                        total: 10000,
+                    },
+
+                ],
+                title: '执行中的合同',
+            },
+            {
+                data:
+                [
+                    {
+                        image: require('../image/contract_dayonghu.png'),
+                        title: '2017年广东电力大用户与发电企...',
+                        num: '10008510',
+                        elecType: '乡村居民生活用电',
+                        time: '2017.06.01 - 2017.09.01',
+                        used: 3000,
+                        total: 10000,
+                    },
+                    {
+                        image: require('../image/contract_daili.png'),
+                        title: '2017年能源代理合同',
+                        num: '10008231',
+                        elecType: '乡村居民生活用电',
+                        time: '2017.06.01 - 2017.09.01',
+                        used: 10000,
+                        total: 10000,
+                    },
+
+                ],
+                title: '已执行完成的合同',
+            },
+        ];
+        this.setState({
+            list,
+        });
+    }
+
     render() {
-        return (this.state.list);
+        const datas = this.state.list;
+        return (<ScrollView style={styles.container}>
+            <SectionList
+                renderItem={({ item }) => <ListItem item={item} onPress={() => {}} />}
+                keyExtractor={(item, index) => (index)}
+                renderSectionHeader={({ section }) => <Header title={section.title} />}
+                sections={datas}
+            />
+            <SplitView />
+        </ScrollView>);
     }
 }

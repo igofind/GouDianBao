@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import { InteractionManager, Text, View, StyleSheet, Image, ScrollView, TouchableOpacity, FlatList } from 'react-native';
+import { Text, View, StyleSheet, Image, ScrollView, TouchableOpacity, FlatList } from 'react-native';
 import Entypo from 'react-native-vector-icons/Entypo';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import SplitView from '../widget/SplitView';
@@ -7,41 +7,6 @@ import ArrowLeft from '../widget/ArrowLeft';
 import theme from '../style/theme';
 import EmptyIcon from '../widget/EmptyIcon';
 import screen from '../common/screen';
-
-const execContList = [
-    {
-        image: require('../image/contract_dayonghu.png'),
-        title: '2017年广东电力大用户与发电企...',
-        num: '10008510',
-    },
-    {
-        image: require('../image/contract_daili.png'),
-        title: '2017年能源代理合同',
-        num: '10006321',
-    },
-    {
-        image: require('../image/contract_dayonghu.png'),
-        title: '广东电力大用户与发电企业购电合同',
-        num: '10001210',
-    },
-    {
-        image: require('../image/contract_daili.png'),
-        title: '广东电力大用户购电合同',
-        num: '10008110',
-    },
-];
-const completeContList = [
-    {
-        image: require('../image/contract_dayonghu.png'),
-        title: '2017年广东电力大用户与发电企...',
-        num: '10003310',
-    },
-    {
-        image: require('../image/contract_daili.png'),
-        title: '2017年能源代理合同',
-        num: '10005111',
-    },
-];
 
 const styles = StyleSheet.create({
     container: {
@@ -172,32 +137,6 @@ class ListItem extends PureComponent {
     }
 }
 
-const list = (<ScrollView style={styles.container}>
-    <SplitView style={{ height: 12 }} />
-    <Header title="执行中的合同" />
-    <FlatList
-        data={execContList}
-        keyExtractor={item => item.num}
-        renderItem={({ item }) => (<ListItem
-            image={item.image}
-            title={item.title}
-            num={item.num}
-        />)}
-    />
-    <SplitView style={{ height: 12 }} />
-    <Header title="已执行完成的合同" />
-    <FlatList
-        data={completeContList}
-        keyExtractor={item => item.num}
-        renderItem={({ item }) => (<ListItem
-            image={item.image}
-            title={item.title}
-            num={item.num}
-        />)}
-    />
-    <SplitView />
-</ScrollView>);
-
 export default class extends PureComponent {
 
     static navigationOptions = ({ navigation }) => ({
@@ -211,8 +150,81 @@ export default class extends PureComponent {
     constructor() {
         super();
         this.state = {
-            list,
+            list: null,
         };
+    }
+
+    componentDidMount() {
+        const timer = requestAnimationFrame(() => {
+            this.fetchData();
+            cancelAnimationFrame(timer);
+        });
+    }
+
+    fetchData() {
+        const execContList = [
+            {
+                image: require('../image/contract_dayonghu.png'),
+                title: '2017年广东电力大用户与发电企...',
+                num: '10008510',
+            },
+            {
+                image: require('../image/contract_daili.png'),
+                title: '2017年能源代理合同',
+                num: '10006321',
+            },
+            {
+                image: require('../image/contract_dayonghu.png'),
+                title: '广东电力大用户与发电企业购电合同',
+                num: '10001210',
+            },
+            {
+                image: require('../image/contract_daili.png'),
+                title: '广东电力大用户购电合同',
+                num: '10008110',
+            },
+        ];
+        const completeContList = [
+            {
+                image: require('../image/contract_dayonghu.png'),
+                title: '2017年广东电力大用户与发电企...',
+                num: '10003310',
+            },
+            {
+                image: require('../image/contract_daili.png'),
+                title: '2017年能源代理合同',
+                num: '10005111',
+            },
+        ];
+        const list = (<ScrollView style={styles.container}>
+            <SplitView style={{ height: 12 }} />
+            <Header title="执行中的合同" />
+            <FlatList
+                data={execContList}
+                keyExtractor={item => item.num}
+                renderItem={({ item }) => (<ListItem
+                    image={item.image}
+                    title={item.title}
+                    num={item.num}
+                />)}
+            />
+            <SplitView style={{ height: 12 }} />
+            <Header title="已执行完成的合同" />
+            <FlatList
+                data={completeContList}
+                keyExtractor={item => item.num}
+                renderItem={({ item }) => (<ListItem
+                    image={item.image}
+                    title={item.title}
+                    num={item.num}
+                />)}
+            />
+            <SplitView />
+        </ScrollView>);
+
+        this.setState({
+            list,
+        });
     }
 
     render() {
