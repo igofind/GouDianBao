@@ -255,10 +255,7 @@ export default class extends PureComponent {
         };
     }
     componentDidMount() {
-        const timer = requestAnimationFrame(() => {
-            this.fetchData();
-            cancelAnimationFrame(timer);
-        });
+        InteractionManager.runAfterInteractions(() => this.fetchData());
     }
     fetchData() {
         this.setState({

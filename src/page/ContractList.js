@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import { Text, View, StyleSheet, Image, ScrollView, TouchableOpacity, FlatList } from 'react-native';
+import { InteractionManager, Text, View, StyleSheet, Image, ScrollView, TouchableOpacity, FlatList } from 'react-native';
 import Entypo from 'react-native-vector-icons/Entypo';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import SplitView from '../widget/SplitView';
@@ -155,10 +155,7 @@ export default class extends PureComponent {
     }
 
     componentDidMount() {
-        const timer = requestAnimationFrame(() => {
-            this.fetchData();
-            cancelAnimationFrame(timer);
-        });
+        InteractionManager.runAfterInteractions(() => this.fetchData());
     }
 
     fetchData() {

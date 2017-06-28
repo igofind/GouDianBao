@@ -1,5 +1,5 @@
 import React, { Component, PureComponent } from 'react';
-import { StyleSheet, Text, TextInput, View } from 'react-native';
+import { InteractionManager, StyleSheet, Text, TextInput, View } from 'react-native';
 import screen from '../common/screen';
 import theme from '../style/theme';
 import ArrowLeft from '../widget/ArrowLeft';
@@ -120,10 +120,7 @@ export default class extends PureComponent {
     }
 
     componentDidMount() {
-        const timer = requestAnimationFrame(() => {
-            this.fetchData();
-            cancelAnimationFrame(timer);
-        });
+        InteractionManager.runAfterInteractions(() => this.fetchData());
     }
 
     fetchData() {

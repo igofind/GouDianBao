@@ -45,10 +45,7 @@ class MineScene extends PureComponent {
     };
 
     navigate(...args) {
-        const timer = requestAnimationFrame(() => {
-            this.props.navigation.navigate(...args);
-            cancelAnimationFrame(timer);
-        });
+        InteractionManager.runAfterInteractions(() => this.props.navigation.navigate(...args));
     }
 
     render() {

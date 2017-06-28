@@ -1,15 +1,12 @@
 import React, { PureComponent } from 'react';
-import { StatusBar, Text, View } from 'react-native';
+import { InteractionManager, StatusBar, Text, View } from 'react-native';
 import IconCell from '../../widget/IconCell';
 import SplitView from '../../widget/SplitView';
 
 class HomeScene extends PureComponent {
 
     navigate(...args) {
-        const timer = requestAnimationFrame(() => {
-            this.props.navigation.navigate(...args);
-            cancelAnimationFrame(timer);
-        });
+        InteractionManager.runAfterInteractions(() => this.props.navigation.navigate(...args));
     }
 
     render() {

@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import { FlatList, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { InteractionManager, FlatList, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import theme from '../style/theme';
 import screen from '../common/screen';
 import SearchBar from '../widget/SearchBar';
@@ -90,10 +90,7 @@ export default class extends PureComponent {
     }
 
     componentDidMount() {
-        const timer = requestAnimationFrame(() => {
-            this.fetchData();
-            cancelAnimationFrame(timer);
-        });
+        InteractionManager.runAfterInteractions(() => this.fetchData());
     }
 
     fetchData() {

@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import { StyleSheet, SectionList, Text, View, TouchableOpacity } from 'react-native';
+import { InteractionManager, StyleSheet, SectionList, Text, View, TouchableOpacity } from 'react-native';
 import screen from '../common/screen';
 import theme from '../style/theme';
 import ArrowLeft from '../widget/ArrowLeft';
@@ -140,10 +140,7 @@ export default class extends PureComponent {
     }
 
     componentDidMount() {
-        const timer = requestAnimationFrame(() => {
-            this.fetchData();
-            cancelAnimationFrame(timer);
-        });
+        InteractionManager.runAfterInteractions(() => this.fetchData());
     }
 
     fetchData() {
