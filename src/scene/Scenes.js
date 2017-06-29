@@ -114,7 +114,7 @@ const StackScenes = StackNavigator({
         screen: ContractDetail,
     },
 }, {
-    initialRouteName: 'Login',
+    initialRouteName: 'Main',
     headerMode: 'float',
     transitionConfig: () => ({
         screenInterpolator: CardStackStyleInterpolator.forHorizontal,

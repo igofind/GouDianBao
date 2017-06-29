@@ -3,13 +3,13 @@ import { StyleSheet, Text, View } from 'react-native';
 
 const styles = StyleSheet.create({
     footer: {
-        height: 64,
+        height: 60,
         flexDirection: 'row',
         justifyContent: 'space-around',
         alignItems: 'center',
     },
     btn: {
-        height: 40,
+        height: 36,
         width: 162,
         backgroundColor: '#F9F9F9',
         flexDirection: 'row',

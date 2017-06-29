@@ -5,7 +5,7 @@ import theme from '../../style/theme';
 
 const styles = StyleSheet.create({
     container: {
-        height: 100,
+        height: 84,
         width: 120,
         alignItems: 'center',
         justifyContent: 'center',
@@ -17,8 +17,8 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
     },
     image: {
-        width: 37,
-        height: 37,
+        width: 30,
+        height: 30,
     },
     label: {
         color: '#3a3a3a',

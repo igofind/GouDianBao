@@ -5,7 +5,7 @@ import theme from '../style/theme';
 
 const styles = StyleSheet.create({
     container: {
-        height: 40,
+        height: 35,
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-between',
@@ -13,7 +13,7 @@ const styles = StyleSheet.create({
         borderBottomColor: theme.listBorderColor,
     },
     title: {
-        fontSize: 15,
+        fontSize: 14,
         lineHeight: 17,
         color: '#3a3a3a',
         marginLeft: theme.marginLeft,
@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
         paddingLeft: 8,
     },
     detail: {
-        fontSize: 15,
+        fontSize: 14,
         color: '#00aaee',
         marginRight: theme.marginRight,
     },
