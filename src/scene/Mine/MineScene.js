@@ -78,7 +78,7 @@ class MineScene extends PureComponent {
                     <Text>申报记录</Text>
                 </IconCell>
                 <IconCell
-                    onPress={() => { this.navigate('MonthElecDetail'); }}
+                    onPress={() => { }}
                     image={require('../../image/mine_elec.png')}
 
                 >

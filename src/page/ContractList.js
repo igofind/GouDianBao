@@ -158,6 +158,10 @@ export default class extends PureComponent {
         InteractionManager.runAfterInteractions(() => this.fetchData());
     }
 
+    navigate(...args) {
+        InteractionManager.runAfterInteractions(() => this.props.navigation.navigate(...args));
+    }
+
     fetchData() {
         const execContList = [
             {
@@ -203,6 +207,7 @@ export default class extends PureComponent {
                     image={item.image}
                     title={item.title}
                     num={item.num}
+                    onPress={() => this.navigate('ContractDetail')}
                 />)}
             />
             <SplitView style={{ height: 12 }} />
@@ -214,6 +219,7 @@ export default class extends PureComponent {
                     image={item.image}
                     title={item.title}
                     num={item.num}
+                    onPress={() => this.navigate('ContractDetail')}
                 />)}
             />
             <SplitView />

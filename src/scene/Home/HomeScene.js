@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import { InteractionManager, StatusBar, StyleSheet, View } from 'react-native';
 import SimpleLineIcons from 'react-native-vector-icons/Octicons';
-import Echarts from 'native-echarts';
+import Echarts from '../../echarts/index';
 import theme from '../../style/theme';
 import Bell from '../../widget/Bell';
 import SplitView from '../../widget/SplitView';
@@ -326,7 +326,7 @@ class HomeScene extends PureComponent {
                     {this.renderCards()}
                 </View>
                 <SplitView style={{ height: 12 }} />
-                <Panel title="年度执行情况" onPressDetail={() => this.navigate('ContractExec')} >
+                <Panel title="年度执行情况" onPressDetail={() => {}} >
                     <Echarts option={echartsOptions[0]} height={100} />
                     <PanelFooter khfy="1085" lr="3085" />
                 </Panel>

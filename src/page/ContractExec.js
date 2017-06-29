@@ -253,11 +253,15 @@ export default class extends PureComponent {
         });
     }
 
+    navigate(...args) {
+        InteractionManager.runAfterInteractions(() => this.props.navigation.navigate(...args));
+    }
+
     render() {
         const datas = this.state.list;
         return (<ScrollView style={styles.container}>
             <SectionList
-                renderItem={({ item }) => <ListItem item={item} onPress={() => {}} />}
+                renderItem={({ item }) => <ListItem item={item} onPress={() => this.navigate('ContractDetail')} />}
                 keyExtractor={(item, index) => (index)}
                 renderSectionHeader={({ section }) => <Header title={section.title} />}
                 sections={datas}
