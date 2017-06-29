@@ -107,7 +107,7 @@ export default {
     headerIconSize: 18,
     containerBC: 'auto',
     cellHeight: 45,
-    activeOpacity: 0.8,
+    activeOpacity: 0.7,
     listBorderColor: '#e6e6e6',
     styles,
     ...statusBarBC,

@@ -1,6 +1,5 @@
 import React from 'react';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
-import SimpleLineIcons from 'react-native-vector-icons/Octicons';
 import { StackNavigator, TabBarBottom, TabNavigator } from 'react-navigation';
 import CardStackStyleInterpolator from 'react-navigation/src/views/CardStackStyleInterpolator';
 import Announcement from '../page/Announcement';
@@ -24,15 +23,6 @@ import ContractDetail from '../page/ContractDetail';
 const TabScenes = TabNavigator({
     Home: {
         screen: HomoScene,
-        navigationOptions: {
-            headerStyle: theme.styles.homeHeaderStyle,
-            headerTitle: '首页',
-            headerTitleStyle: theme.styles.homeHeaderTitleStyle,
-            tabBarLabel: '首页',
-            tabBarIcon: ({ tintColor }) => (<SimpleLineIcons name="home" size={theme.tabIconSize} color={tintColor} />),
-            headerLeft: null,
-            headerRight: null,
-        },
     },
     Business: {
         screen: BusinessScene,
