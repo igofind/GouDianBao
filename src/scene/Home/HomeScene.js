@@ -47,6 +47,7 @@ const echartsOptions = [
             itemWidth: 6,
             itemHeight: 6,
             padding: 0,
+            selectedMode: false,
         },
         xAxis: {
             data: ['总合同电量', '总实际执行电量'],
@@ -64,6 +65,7 @@ const echartsOptions = [
                     color: '#D3D3D3',
                 },
             },
+            min: 1,
         },
         yAxis: {
             name: '兆瓦时',
@@ -326,7 +328,7 @@ class HomeScene extends PureComponent {
                     {this.renderCards()}
                 </View>
                 <SplitView style={{ height: 12 }} />
-                <Panel title="年度执行情况" onPressDetail={() => {}} >
+                <Panel title="年度执行情况" onPressDetail={() => this.navigate('DealAndElec')} >
                     <Echarts option={echartsOptions[0]} height={100} />
                     <PanelFooter khfy="1085" lr="3085" />
                 </Panel>

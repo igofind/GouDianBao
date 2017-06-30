@@ -126,7 +126,7 @@ export default class extends PureComponent {
 
     static navigationOptions = ({ navigation }) => ({
         headerStyle: theme.styles.commonHeaderStyle,
-        headerTitle: '成交及用电',
+        headerTitle: '月度成交及用电明细',
         headerTitleStyle: theme.styles.commonHeaderTitleStyle,
         headerLeft: <ArrowLeft onPress={() => { navigation.goBack(null); }} />,
         headerRight: <EmptyIcon />,

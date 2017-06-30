@@ -19,6 +19,7 @@ import CompanyInfo from '../page/CompanyInfo';
 import DealList from '../page/DealList';
 import ElecDeclare from '../page/ElecDeclare';
 import ContractDetail from '../page/ContractDetail';
+import DealAndElec from '../page/DealAndElec';
 
 const TabScenes = TabNavigator({
     Home: {
@@ -113,8 +114,11 @@ const StackScenes = StackNavigator({
     ContractDetail: {
         screen: ContractDetail,
     },
+    DealAndElec: {
+        screen: DealAndElec,
+    },
 }, {
-    initialRouteName: 'Login',
+    initialRouteName: 'Main',
     headerMode: 'float',
     transitionConfig: () => ({
         screenInterpolator: CardStackStyleInterpolator.forHorizontal,
