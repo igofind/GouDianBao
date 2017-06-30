@@ -155,6 +155,7 @@ export default class extends PureComponent {
         return (
             <View style={styles.container} >
                 <SectionList
+                    removeClippedSubviews={false}
                     renderItem={({ item, index }) => <ListItem index={index} item={item} onPress={() => {}} />}
                     keyExtractor={(item, index) => (index)}
                     renderSectionHeader={({ section }) => <Header title={section.title} />}

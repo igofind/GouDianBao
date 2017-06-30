@@ -202,6 +202,7 @@ export default class extends PureComponent {
             <Header title="执行中的合同" />
             <FlatList
                 data={execContList}
+                removeClippedSubviews={false}
                 keyExtractor={item => item.num}
                 renderItem={({ item }) => (<ListItem
                     image={item.image}
@@ -213,6 +214,7 @@ export default class extends PureComponent {
             <SplitView style={{ height: 12 }} />
             <Header title="已执行完成的合同" />
             <FlatList
+                removeClippedSubviews={false}
                 data={completeContList}
                 keyExtractor={item => item.num}
                 renderItem={({ item }) => (<ListItem

@@ -261,6 +261,7 @@ export default class extends PureComponent {
         const datas = this.state.list;
         return (<ScrollView style={styles.container}>
             <SectionList
+                removeClippedSubviews={false}
                 renderItem={({ item }) => <ListItem item={item} onPress={() => this.navigate('ContractDetail')} />}
                 keyExtractor={(item, index) => (index)}
                 renderSectionHeader={({ section }) => <Header title={section.title} />}

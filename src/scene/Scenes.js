@@ -118,13 +118,10 @@ const StackScenes = StackNavigator({
         screen: DealAndElec,
     },
 }, {
-    initialRouteName: 'Main',
+    initialRouteName: 'Login',
     headerMode: 'float',
     transitionConfig: () => ({
         screenInterpolator: CardStackStyleInterpolator.forHorizontal,
-        transitionSpec: {
-            duration: 220, // 弹出动画持续时间，这里比默认少了20
-        },
     }),
 });
 

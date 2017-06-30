@@ -1,13 +1,13 @@
 import React, { PureComponent } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { InteractionManager, StyleSheet, Text, View } from 'react-native';
+import Echarts from '../echarts/index';
 import PanelFooter from '../scene/Home/PanelFooter';
 import theme from '../style/theme';
 import ArrowLeft from '../widget/ArrowLeft';
 import EmptyIcon from '../widget/EmptyIcon';
 import Panel from '../widget/Panel';
-import SplitView from '../widget/SplitView';
 import ProgressBar from '../widget/ProgressBar';
-import Echarts from '../echarts/index';
+import SplitView from '../widget/SplitView';
 
 const styles = StyleSheet.create({
     barCell: {
@@ -145,11 +145,15 @@ export default class extends PureComponent {
         headerRight: <EmptyIcon />,
     });
 
+    navigate(...args) {
+        InteractionManager.runAfterInteractions(() => this.props.navigation.navigate(...args));
+    }
+
     render() {
         return (
             <View >
                 <SplitView style={{ height: 12 }} />
-                <Panel title="年度累计交易" onPressDetail={() => this.navigate('DealAndElec')}>
+                <Panel title="年度累计交易" onPressDetail={() => this.navigate('MonthElecDetail')}>
                     <Echarts option={config} height={150} />
                     <PanelFooter llabel="总考核费用" rlabel="总利润" khfy="1085" lr="3085" />
                     <ProgressBarCell label="总申报电量" color={colors[0]} progress={1} num={3016} />

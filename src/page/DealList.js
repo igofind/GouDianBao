@@ -104,6 +104,7 @@ export default class extends PureComponent {
         return (
             <View style={styles.container}>
                 <FlatList
+                    removeClippedSubviews={false}
                     renderItem={({ item }) => <ListItem item={item} />}
                     keyExtractor={item => item.guid}
                     ListHeaderComponent={<SearchBar title="搜索" />}
