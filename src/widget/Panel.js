@@ -13,7 +13,7 @@ export default class extends PureComponent {
     render() {
         return (
             <View style={styles.container} >
-                <PanelTitle title={this.props.title} onPress={this.props.onPressDetail} />
+                <PanelTitle {...this.props} onPress={this.props.onPressDetail} />
                 {this.props.children}
             </View>
         );

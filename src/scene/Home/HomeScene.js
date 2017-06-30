@@ -330,7 +330,7 @@ class HomeScene extends PureComponent {
                 <SplitView style={{ height: 12 }} />
                 <Panel title="年度执行情况" onPressDetail={() => this.navigate('DealAndElec')} >
                     <Echarts option={echartsOptions[0]} height={100} />
-                    <PanelFooter khfy="1085" lr="3085" />
+                    <PanelFooter llabel="考核费用" rlabel="利润" khfy="1085" lr="3085" />
                 </Panel>
                 <SplitView style={{ height: 12 }} />
                 <Panel title="5月成交及用电情况" onPressDetail={() => this.navigate('ContractExec')} >
@@ -338,7 +338,7 @@ class HomeScene extends PureComponent {
                         <Echarts option={echartsOptions[1]} height={100} width="50%" />
                         <Echarts option={echartsOptions[2]} height={100} width="50%" />
                     </View>
-                    <PanelFooter khfy="3085" lr="3085" />
+                    <PanelFooter llabel="考核费用" rlabel="利润" khfy="1085" lr="3085" />
                 </Panel>
             </View>
         );

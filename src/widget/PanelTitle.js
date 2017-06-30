@@ -28,13 +28,18 @@ const styles = StyleSheet.create({
     },
 });
 export default class extends PureComponent {
+
+    static defaultProps = {
+        detailLink: true,
+    };
     render() {
         return (
             <View style={styles.container} >
                 <Text style={styles.title}>{this.props.title}</Text>
-                <TouchableOpacity activeOpacity={theme.activeOpacity} onPressIn={this.props.onPress}>
+                {this.props.detailLink
+                && <TouchableOpacity activeOpacity={theme.activeOpacity} onPressIn={this.props.onPress}>
                     <Text style={styles.detail}>详情</Text>
-                </TouchableOpacity>
+                </TouchableOpacity>}
             </View>
         );
     }
