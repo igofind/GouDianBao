@@ -1,19 +1,27 @@
 import React, { PureComponent } from 'react';
-import { InteractionManager, StatusBar, StyleSheet, View } from 'react-native';
+import { InteractionManager, processColor, ScrollView, StatusBar, StyleSheet, View } from 'react-native';
+import { BarChart } from 'react-native-charts-wrapper';
 import SimpleLineIcons from 'react-native-vector-icons/Octicons';
 import Echarts from '../../echarts/index';
 import theme from '../../style/theme';
 import Bell from '../../widget/Bell';
+import EmptyIcon from '../../widget/EmptyIcon';
+import Panel from '../../widget/Panel';
 import SplitView from '../../widget/SplitView';
 import Card from './Card';
-import Panel from '../../widget/Panel';
 import PanelFooter from './PanelFooter';
-import EmptyIcon from '../../widget/EmptyIcon';
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
     },
+    barCharContainer: {
+       /* marginTop: 5,
+        height: 95,*/
+        height: 100,
+        backgroundColor: '#fff',
+        marginLeft: theme.marginLeft,
+        marginRight: theme.marginRight },
     cards: {
         flexDirection: 'row',
     },
@@ -24,7 +32,11 @@ const echartsOptions = [
         title: {
             show: false,
         },
-        tooltip: {},
+        tooltip: {
+            textStyle: {
+                fontSize: 10,
+            },
+        },
         grid: {
             top: 30,
             height: 50,
@@ -42,7 +54,7 @@ const echartsOptions = [
             ],
             top: 'bottom',
             textStyle: {
-                fontSize: 10,
+                fontSize: 8,
             },
             itemWidth: 6,
             itemHeight: 6,
@@ -70,7 +82,7 @@ const echartsOptions = [
         yAxis: {
             name: '兆瓦时',
             nameTextStyle: {
-                fontSize: 10,
+                fontSize: 8,
                 color: '#8d8d8d',
             },
             nameGap: 10,
@@ -83,7 +95,7 @@ const echartsOptions = [
             axisLabel: {
                 textStyle: {
                     color: '#8d8d8d',
-                    fontSize: 10,
+                    fontSize: 8,
                 },
             },
             axisLine: {
@@ -267,6 +279,49 @@ const echartsOptions = [
     },
 ];
 
+const BLUE = processColor('#00AAEE');
+const GREEN = processColor('#47CFA0');
+
+const chartsOpts = {
+    chartDescription: {
+        text: '兆瓦时',
+        positionX: 60,
+        positionY: 23,
+        textSize: 6,
+        textColor: processColor('#8d8d8d'),
+    },
+    legend: {
+        enabled: true,
+        position: 'BELOW_CHART_CENTER',
+        textSize: 8,
+        textColor: processColor('#8d8d8d'),
+        formSize: 6,
+        xEntrySpace: 40,
+        wordWrapEnabled: false,
+    },
+    xAxis: {
+        enabled: false,
+    },
+    yAxis: {
+        left: {
+            drawLabels: true,
+            drawAxisLine: true,
+            drawGridLines: false,
+            axisMinimum: 0,
+            zeroLine: {
+                enabled: true,
+                lineWidth: 0.5,
+            },
+            spaceTop: 10,
+            textSize: 8,
+            textColor: processColor('#8d8d8d'),
+        },
+        right: {
+            enabled: false,
+        },
+    },
+};
+
 class HomeScene extends PureComponent {
 
     static navigationOptions = {
@@ -282,7 +337,204 @@ class HomeScene extends PureComponent {
     constructor() {
         super();
         this.state = {
-            barSeries: null,
+            // barChartData: this.genBarChartData(19, 12),
+            pieChart1Data: this.genPieChartData1(400, 120),
+            pieChart2Data: this.genPieChartData2(400, 120),
+        };
+    }
+    componentDidMount() {
+        this.timer = setInterval(() => {
+            const pieChartData = Math.floor(Math.random() * 300);
+            this.setState({
+                barChartData: this.genBarChartData(Math.floor(Math.random() * 25), Math.floor(Math.random() * 25)),
+                pieChart1Data: this.genPieChartData1(pieChartData + 100, pieChartData),
+            });
+        }, 2000);
+    }
+    componentWillUnmount() {
+        clearInterval(this.timer);
+    }
+
+    genBarChartData(zhtdl, zsjzxdl) {
+        return {
+            dataSets: [{
+                values: [
+                    { x: 0, y: 0 },
+                    { y: zhtdl, x: 2.5 },
+                ],
+                label: '总合同电量',
+                animation: { durationY: 300 },
+                config: {
+                    colors: [GREEN],
+                    drawValues: false,
+                    animation: { durationY: 300 },
+                },
+            }, {
+                values: [
+                    { y: zsjzxdl, x: 5.2 },
+                    { x: 8, y: 0 },
+                ],
+                label: '总实际执行电量',
+                animation: { durationY: 300 },
+                config: {
+                    colors: [BLUE],
+                    drawValues: false,
+                    animation: { durationY: 300 },
+                },
+            }],
+            animation: { durationY: 300 },
+        };
+    }
+
+    genPieChartData1(sbdl, cjdl) {
+        return {
+            tooltip: {
+                trigger: 'item',
+                formatter: '{b}: {c} ({d}%)',
+                position: [20, 0],
+                textStyle: {
+                    fontSize: 10,
+                },
+            },
+            legend: {
+                orient: 'horizontal',
+                x: 'center',
+                top: 'bottom',
+                itemWidth: 6,
+                itemHeight: 6,
+                data: [
+                    {
+                        name: '申报电量',
+                        icon: 'rect',
+                    },
+                    {
+                        name: '成交电量',
+                        icon: 'rect',
+                    },
+                ],
+                textStyle: {
+                    fontSize: 8,
+                    color: '#8d8d8d',
+                },
+                selectedMode: false,
+                padding: 0,
+            },
+            series: [
+                {
+                    type: 'pie',
+                    radius: ['50%', '70%'],
+                    avoidLabelOverlap: false,
+                    hoverAnimation: false,
+                    cursor: 'normal',
+                    label: {
+                        normal: {
+                            position: 'outside',
+                            formatter: '{c} 兆瓦时',
+                            textStyle: {
+                                fontSize: 8,
+                            },
+                        },
+                        emphasis: {
+                            position: 'outside',
+                            formatter: '{c} 兆瓦时',
+                            textStyle: {
+                                fontSize: 8,
+                            },
+                        },
+                    },
+                    labelLine: {
+                        normal: {
+                            length: 5,
+                            length2: 5,
+                        },
+                        emphasis: {
+                            length: 5,
+                            length2: 5,
+                        },
+                    },
+                    data: [
+                        { value: cjdl, name: '成交电量' },
+                        { value: sbdl, name: '申报电量' },
+                    ],
+                },
+            ],
+            color: ['#47CFA0', '#00aaee'],
+        };
+    }
+
+    genPieChartData2(zhtdl, zsjzxdl) {
+        return {
+            tooltip: {
+                trigger: 'item',
+                formatter: '{b}: {c} ({d}%)',
+                position: [20, 0],
+                textStyle: {
+                    fontSize: 10,
+                },
+            },
+            legend: {
+                orient: 'horizontal',
+                x: 'center',
+                top: 'bottom',
+                itemWidth: 6,
+                itemHeight: 6,
+                data: [
+                    {
+                        name: '总合同电量',
+                        icon: 'rect',
+                    },
+                    {
+                        name: '总实际执行电量',
+                        icon: 'rect',
+                    },
+                ],
+                textStyle: {
+                    fontSize: 8,
+                    color: '#8d8d8d',
+                },
+                selectedMode: false,
+                padding: 0,
+            },
+            series: [
+                {
+                    type: 'pie',
+                    radius: ['50%', '70%'],
+                    avoidLabelOverlap: false,
+                    hoverAnimation: false,
+                    cursor: 'normal',
+                    label: {
+                        normal: {
+                            position: 'outside',
+                            formatter: '{c} 兆瓦时',
+                            textStyle: {
+                                fontSize: 8,
+                            },
+                        },
+                        emphasis: {
+                            position: 'outside',
+                            formatter: '{c} 兆瓦时',
+                            textStyle: {
+                                fontSize: 8,
+                            },
+                        },
+                    },
+                    labelLine: {
+                        normal: {
+                            length: 5,
+                            length2: 5,
+                        },
+                        emphasis: {
+                            length: 5,
+                            length2: 5,
+                        },
+                    },
+                    data: [
+                        { value: zsjzxdl, name: '总实际执行电量' },
+                        { value: zhtdl, name: '总合同电量' },
+                    ],
+                },
+            ],
+            color: ['#FF6D5D', '#FFBE58'],
         };
     }
 
@@ -321,26 +573,45 @@ class HomeScene extends PureComponent {
 
     render() {
         return (
-            <View style={styles.container}>
+            <ScrollView style={styles.container}>
                 <StatusBar backgroundColor={'transparent'} translucent={true} />
                 <SplitView style={{ height: 12 }} />
                 <View style={styles.cards} >
                     {this.renderCards()}
                 </View>
+                {/* <SplitView style={{ height: 12 }} />
+                <Panel title="年度执行情况" onPressDetail={() => this.navigate('DealAndElec')} >
+                    <View style={styles.barCharContainer}>
+                        <BarChart
+                            animation={{ durationX: 300, durationY: 300 }}
+                            style={{ flex: 1 }}
+                            touchEnabled={false}
+                            scaleEnabled={false}
+                            chartDescription={chartsOpts.chartDescription}
+                            data={this.state.barChartData}
+                            xAxis={chartsOpts.xAxis}
+                            yAxis={chartsOpts.yAxis}
+                            legend={chartsOpts.legend}
+                        />
+                    </View>
+                    <PanelFooter llabel="考核费用" rlabel="利润" khfy="1085" lr="3085" />
+                </Panel>*/}
                 <SplitView style={{ height: 12 }} />
                 <Panel title="年度执行情况" onPressDetail={() => this.navigate('DealAndElec')} >
-                    <Echarts option={echartsOptions[0]} height={100} />
+                    <View style={styles.barCharContainer}>
+                        <Echarts option={echartsOptions[0]} height={100} />
+                    </View>
                     <PanelFooter llabel="考核费用" rlabel="利润" khfy="1085" lr="3085" />
                 </Panel>
                 <SplitView style={{ height: 12 }} />
                 <Panel title="5月成交及用电情况" onPressDetail={() => this.navigate('ContractExec')} >
                     <View style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }} >
-                        <Echarts option={echartsOptions[1]} height={100} width="50%" />
-                        <Echarts option={echartsOptions[2]} height={100} width="50%" />
+                        <Echarts option={this.state.pieChart1Data} height={100} width="50%" />
+                        <Echarts option={this.state.pieChart2Data} height={100} width="50%" />
                     </View>
                     <PanelFooter llabel="考核费用" rlabel="利润" khfy="1085" lr="3085" />
                 </Panel>
-            </View>
+            </ScrollView>
         );
     }
 }
