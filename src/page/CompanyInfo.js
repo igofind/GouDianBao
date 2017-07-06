@@ -8,6 +8,10 @@ import SplitView from '../widget/SplitView';
 import PickerCell from '../widget/PickerCell';
 
 const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        backgroundColor: theme.blankBgColor,
+    },
     inputItem: {
         flexDirection: 'row',
         alignItems: 'center',

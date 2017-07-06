@@ -10,6 +10,7 @@ import EmptyIcon from '../../widget/EmptyIcon';
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        backgroundColor: theme.blankBgColor,
     },
     header: {
         flexDirection: 'column',

@@ -13,7 +13,7 @@ const styles = StyleSheet.create({
         borderBottomColor: theme.listBorderColor,
     },
     title: {
-        fontSize: 14,
+        fontSize: 15,
         lineHeight: 17,
         color: '#3a3a3a',
         marginLeft: theme.marginLeft,

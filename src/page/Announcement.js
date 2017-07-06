@@ -5,6 +5,7 @@ import ArrowLeft from '../widget/ArrowLeft';
 import EmptyIcon from '../widget/EmptyIcon';
 
 const tradeDetailText = `
+<body style="background: #f5f5f5">
     <h2 style="white-space: normal; margin-right: 0px; margin-left: 0px; text-align: center; text-indent: 0em;">
     <span style="font-family: 仿宋; letter-spacing: 0px; font-size: 14px;">第一章&nbsp;总&nbsp;则</span>
 </h2>
@@ -236,6 +237,7 @@ const tradeDetailText = `
 <p>
     <br/>
 </p>
+</body>
 `;
 
 export default class extends PureComponent {

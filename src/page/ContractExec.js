@@ -13,6 +13,7 @@ import screen from '../common/screen';
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        backgroundColor: theme.blankBgColor,
     },
     header: {
         height: 40,

@@ -1,11 +1,11 @@
 import React, { PureComponent } from 'react';
-import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import screen from '../../common/screen';
 import theme from '../../style/theme';
 
 const styles = StyleSheet.create({
     container: {
-        height: 84,
+        flexGrow: 1,
         width: 120,
         alignItems: 'center',
         justifyContent: 'center',
@@ -13,7 +13,6 @@ const styles = StyleSheet.create({
         borderBottomColor: theme.listBorderColor,
         borderLeftWidth: screen.twoPixel,
         borderLeftColor: theme.listBorderColor,
-        flexGrow: 1,
         backgroundColor: '#fff',
     },
     image: {
@@ -32,11 +31,13 @@ const styles = StyleSheet.create({
 export default class extends PureComponent {
     render() {
         return (
-            <TouchableOpacity activeOpacity={theme.activeOpacity} onPressIn={this.props.onPress} >
-                <View style={styles.container}>
-                    <Image source={this.props.image} style={styles.image} />
-                    <Text style={styles.label}>{this.props.label}</Text>
-                </View>
+            <TouchableOpacity
+                activeOpacity={theme.activeOpacity}
+                onPressIn={this.props.onPress}
+                style={styles.container}
+            >
+                <Image source={this.props.image} style={styles.image} />
+                <Text style={styles.label}>{this.props.label}</Text>
             </TouchableOpacity>
         );
     }

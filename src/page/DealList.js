@@ -10,6 +10,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         flexDirection: 'column',
+        backgroundColor: theme.blankBgColor,
     },
 
     listItem: {
@@ -39,8 +40,8 @@ const styles = StyleSheet.create({
         borderRadius: 4,
         fontSize: 12,
         marginRight: theme.marginRight,
-        borderWidth: screen.twoPixel,
-        borderColor: theme.listBorderColor,
+        borderWidth: screen.onePixel,
+        borderColor: '#c8c8c8',
     },
 });
 

@@ -11,6 +11,7 @@ import SplitLine from '../widget/SplitLine';
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        backgroundColor: theme.blankBgColor,
     },
     picker: {
         height: 45,
@@ -46,6 +47,7 @@ const styles = StyleSheet.create({
     income: {
         height: 30,
         flexDirection: 'row',
+        justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: '#fff',
         borderBottomColor: theme.listBorderColor,
@@ -61,13 +63,13 @@ const styles = StyleSheet.create({
     incomeNum: {
         flex: 1,
         fontSize: 15,
-        color: '#ff3f44',
+        color: '#ff2d4b',
         textAlignVertical: 'center',
         textAlign: 'right',
         marginRight: 5,
     },
     btn: {
-        height: 45,
+        height: 40,
         marginLeft: theme.marginLeft,
         marginRight: theme.marginRight,
         color: '#fff',
@@ -126,7 +128,11 @@ export default class extends PureComponent {
         headerTitle: '申报电量',
         headerTitleStyle: theme.styles.commonHeaderTitleStyle,
         headerLeft: <ArrowLeft onPress={() => { navigation.goBack(null); }} />,
-        headerRight: <HeaderBtn onPress={() => { navigation.navigate('DeclarationRecord'); }} title="申报记录" />,
+        headerRight: <HeaderBtn
+            onPress={() => { navigation.navigate('DeclarationRecord'); }}
+            text="申报记录"
+            style={{ width: 60, marginRight: 6 }}
+        />,
     });
 
     render() {
@@ -158,7 +164,7 @@ export default class extends PureComponent {
                 <RefLine left="" right="执行电量xxxx兆瓦时" />
                 <RefLine left="" right="超欠电量xxxx兆瓦时" />
                 <RefLine left="7月年度分解电量:" right="xxxx兆瓦时" />
-                <TouchableOpacity activeOpacity={0.6} onPressIn={() => { navigate('Announcement'); }} >
+                <TouchableOpacity activeOpacity={theme.activeOpacity} onPressIn={() => { navigate('Announcement'); }} >
                     <RefLine left="7月交易告:" right="2017年7月月度电力直接交易公告" underline={true} />
                 </TouchableOpacity>
             </View>

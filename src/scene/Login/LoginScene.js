@@ -1,8 +1,9 @@
 import React, { PureComponent } from 'react';
-import { Image, InteractionManager, StatusBar, StyleSheet, View } from 'react-native';
+import { Image, StatusBar, StyleSheet, View } from 'react-native';
 import LoginButton from './LoginButton';
 import LoginCheckBox from './LoginCheckBox';
 import InputItem from './LoginInputItem';
+import theme from '../../style/theme';
 
 const styles = StyleSheet.create({
     body: {
@@ -10,14 +11,12 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
     },
     logoContainer: {
-        height: 77 + StatusBar.currentHeight,
+        height: (197 - theme.navBarHeight),
         flexDirection: 'column',
         alignItems: 'center',
-        justifyContent: 'center',
-        marginTop: 30,
     },
     image: {
-        marginTop: 0,
+        marginTop: 30,
         width: 82,
         height: 82,
     },

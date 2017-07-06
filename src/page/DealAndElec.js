@@ -10,6 +10,10 @@ import ProgressBar from '../widget/ProgressBar';
 import SplitView from '../widget/SplitView';
 
 const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        backgroundColor: theme.blankBgColor,
+    },
     barCell: {
         backgroundColor: '#fff',
         height: 40,
@@ -151,7 +155,7 @@ export default class extends PureComponent {
 
     render() {
         return (
-            <View >
+            <View style={styles.container}>
                 <SplitView style={{ height: 12 }} />
                 <Panel title="年度累计交易" onPressDetail={() => this.navigate('MonthElecDetail')}>
                     <Echarts option={config} height={150} />

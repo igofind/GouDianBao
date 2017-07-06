@@ -14,16 +14,22 @@ import PanelFooter from './PanelFooter';
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        flexDirection: 'column',
+        backgroundColor: theme.blankBgColor,
+    },
+    cards: {
+        height: 100,
+        flexDirection: 'row',
     },
     barCharContainer: {
        /* marginTop: 5,
         height: 95,*/
-        height: 100,
         backgroundColor: '#fff',
         marginLeft: theme.marginLeft,
-        marginRight: theme.marginRight },
-    cards: {
-        flexDirection: 'row',
+        marginRight: theme.marginRight,
+    },
+    panel: {
+        height: (174 + 40),
     },
 });
 
@@ -343,16 +349,16 @@ class HomeScene extends PureComponent {
         };
     }
     componentDidMount() {
-        this.timer = setInterval(() => {
+        this.timer = setTimeout(() => {
             const pieChartData = Math.floor(Math.random() * 300);
             this.setState({
                 barChartData: this.genBarChartData(Math.floor(Math.random() * 25), Math.floor(Math.random() * 25)),
                 pieChart1Data: this.genPieChartData1(pieChartData + 100, pieChartData),
             });
-        }, 2000);
+        }, 4000);
     }
     componentWillUnmount() {
-        clearInterval(this.timer);
+        clearTimeout(this.timer);
     }
 
     genBarChartData(zhtdl, zsjzxdl) {
@@ -597,20 +603,21 @@ class HomeScene extends PureComponent {
                     <PanelFooter llabel="考核费用" rlabel="利润" khfy="1085" lr="3085" />
                 </Panel>*/}
                 <SplitView style={{ height: 12 }} />
-                <Panel title="年度执行情况" onPressDetail={() => this.navigate('DealAndElec')} >
+                <Panel title="年度执行情况" onPressDetail={() => this.navigate('DealAndElec')} style={styles.panel}>
                     <View style={styles.barCharContainer}>
                         <Echarts option={echartsOptions[0]} height={100} />
                     </View>
                     <PanelFooter llabel="考核费用" rlabel="利润" khfy="1085" lr="3085" />
                 </Panel>
                 <SplitView style={{ height: 12 }} />
-                <Panel title="5月成交及用电情况" onPressDetail={() => this.navigate('ContractExec')} >
+                <Panel title="5月成交及用电情况" onPressDetail={() => this.navigate('ContractExec')} style={styles.panel}>
                     <View style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }} >
                         <Echarts option={this.state.pieChart1Data} height={100} width="50%" />
                         <Echarts option={this.state.pieChart2Data} height={100} width="50%" />
                     </View>
                     <PanelFooter llabel="考核费用" rlabel="利润" khfy="1085" lr="3085" />
                 </Panel>
+                <SplitView style={{ height: 12 }} />
             </ScrollView>
         );
     }

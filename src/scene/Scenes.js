@@ -122,7 +122,7 @@ const StackScenes = StackNavigator({
         screen: TradeAnalysis,
     },
 }, {
-    initialRouteName: 'TradeAnalysis',
+    initialRouteName: 'Login',
     headerMode: 'float',
     transitionConfig: () => ({
         screenInterpolator: CardStackStyleInterpolator.forHorizontal,

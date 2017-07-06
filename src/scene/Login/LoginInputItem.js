@@ -1,7 +1,8 @@
 import React, { PureComponent } from 'react';
-import { TextInput, View, StyleSheet } from 'react-native';
+import { TextInput, View, StyleSheet, TouchableWithoutFeedback } from 'react-native';
 import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import Entypo from 'react-native-vector-icons/Entypo';
 import screen from '../../common/screen';
 import theme from '../../style/theme';
 
@@ -18,6 +19,7 @@ const styles = StyleSheet.create({
     },
     input: {
         flex: 1,
+        fontSize: 16,
         color: '#3a3a3a',
     },
     icon: {
@@ -28,6 +30,10 @@ const styles = StyleSheet.create({
     },
     focus: {
         color: theme.blue,
+    },
+    clearIcon: {
+        alignItems: 'flex-end',
+        marginRight: 16,
     },
 });
 
@@ -51,20 +57,24 @@ class LoginInputItem extends PureComponent {
         });
     }
 
+    clear() {
+        this.input.clear();
+    }
+
     renderIcon() {
         let icon = null;
         switch (this.props.type) {
             case 'account':
                 icon = (<FontAwesome
                     name={this.props.name}
-                    size={18}
+                    size={20}
                     style={[styles.icon, this.state.isFocused && styles.focus]}
                 />);
                 break;
             case 'passwd':
                 icon = (<SimpleLineIcons
                     name={this.props.name}
-                    size={18}
+                    size={20}
                     style={[styles.icon, this.state.isFocused && styles.focus]}
                 />);
                 break;
@@ -73,11 +83,21 @@ class LoginInputItem extends PureComponent {
         return icon;
     }
 
+    renderClearIcon() {
+        if (this.state.isFocused) {
+            return (<TouchableWithoutFeedback onPress={() => this.clear()}>
+                <Entypo name="circle-with-cross" size={20} color="#e6e6e6" style={styles.clearIcon} />
+            </TouchableWithoutFeedback>);
+        }
+        return null;
+    }
+
     render() {
         return (
             <View style={styles.container} >
                 {this.renderIcon()}
                 <TextInput
+                    ref={(input) => { this.input = input; }}
                     style={[styles.input]}
                     keyboardType={this.props.keyboardType}
                     underlineColorAndroid="transparent"
@@ -86,7 +106,9 @@ class LoginInputItem extends PureComponent {
                     secureTextEntry={this.props.secureTextEntry}
                     onFocus={() => this.onFocus()}
                     onBlur={() => this.onBlur()}
+                    maxLength={20}
                 />
+                {this.renderClearIcon()}
             </View>
         );
     }

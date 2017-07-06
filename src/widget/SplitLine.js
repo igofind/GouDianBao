@@ -11,7 +11,7 @@ const styles = StyleSheet.create({
     line: {
         flex: 1,
         height: screen.twoPixel,
-        backgroundColor: '#bdbdbd',
+        backgroundColor: '#e6e6e6',
         marginLeft: theme.marginLeft,
         marginRight: theme.marginRight,
     },
@@ -34,13 +34,13 @@ export default class extends PureComponent {
                 <View style={[
                     styles.line,
                     this.props.height && { height: this.props.height },
-                    noTitle && { marginRight: 0 }]}
+                    noTitle && { marginRight: 0 }, this.props.lineStyle]}
                 />
                 {text}
                 <View style={[
                     styles.line,
                     this.props.height && { height: this.props.height },
-                    noTitle && { marginLeft: 0 }]}
+                    noTitle && { marginLeft: 0 }, this.props.lineStyle]}
                 />
             </View>
         );

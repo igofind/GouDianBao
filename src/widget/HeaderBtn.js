@@ -7,7 +7,10 @@ export default class extends PureComponent {
         return (
             <HeaderIcon onPress={this.props.onPress} style={this.props.style} >
                 <Text
-                    style={[{ color: '#fff', textAlign: 'center', textAlignVertical: 'center' }, this.props.textStyle]}
+                    style={[
+                        { color: '#fff', textAlign: 'center', textAlignVertical: 'center', fontSize: 14 },
+                        this.props.textStyle,
+                    ]}
                 >
                     {this.props.text}
                 </Text>

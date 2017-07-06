@@ -2,10 +2,13 @@ import React, { PureComponent } from 'react';
 import { StyleSheet, View } from 'react-native';
 import SplitView from '../../widget/SplitView';
 import CalcSceneItem from './CalcSceneItem';
+import theme from '../../style/theme';
 
 const styles = StyleSheet.create({
     container: {
         // backgroundColor: theme.containerBC,
+        flex: 1,
+        backgroundColor: theme.backgroundColor,
     },
 });
 const items = [

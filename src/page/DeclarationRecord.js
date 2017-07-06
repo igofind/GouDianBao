@@ -1,19 +1,21 @@
 import React, { PureComponent } from 'react';
-import { InteractionManager, StyleSheet, SectionList, Text, View } from 'react-native';
+import { StyleSheet, SectionList, Text, View } from 'react-native';
 import theme from '../style/theme';
 import ArrowLeft from '../widget/ArrowLeft';
 import EmptyIcon from '../widget/EmptyIcon';
-import SplitView from '../widget/SplitView';
 import screen from '../common/screen';
+import SplitLine from '../widget/SplitLine';
+import SplitView from '../widget/SplitView';
 
 const styles = StyleSheet.create({
     container: {
         flexDirection: 'row',
         flex: 1,
+        backgroundColor: theme.blankBgColor,
     },
     sectionHeader: {
         height: 30,
-        fontSize: 16,
+        fontSize: 14,
         color: '#8d8d8d',
         textAlignVertical: 'center',
         marginLeft: theme.marginLeft,
@@ -22,7 +24,7 @@ const styles = StyleSheet.create({
         flexDirection: 'column',
     },
     itemLine: {
-        height: 90,
+        height: 87,
         flex: 1,
         flexDirection: 'row',
     },
@@ -53,7 +55,7 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         textAlignVertical: 'bottom',
         color: '#3a3a3a',
-        fontSize: 14,
+        fontSize: 13,
         paddingRight: 2,
         paddingLeft: 2,
     },
@@ -69,11 +71,11 @@ const styles = StyleSheet.create({
         color: '#00aaee',
     },
     recordUnit: {
-        fontSize: 14,
-        lineHeight: 34,
+        fontSize: 12,
+        lineHeight: 30,
         marginLeft: 5,
         textAlignVertical: 'bottom',
-        color: '#bdbdbd',
+        color: '#8d8d8d',
     },
 });
 
@@ -201,10 +203,10 @@ export default class extends PureComponent {
                     refreshing={false}
                     onRefresh={() => this.doRefresh()}
                     ListFooterComponent={
-                        (datas.length > 0
-                        && <Text style={{ flex: 1, textAlign: 'center', marginTop: 20, color: '#bdbdbd' }}>
-                            -------- 我也是有底线的人 --------
-                        </Text>)
+                        <View>
+                            <SplitView style={{ height: 12 }} />
+                            <SplitLine title="没有更多记录了" titleStyle={{ color: '#bdbdbd' }} />
+                        </View>
                     }
                     onEndReached={() => this.onEndReached()}
                     sections={list}

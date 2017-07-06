@@ -4,14 +4,15 @@ import theme from "../../style/theme";
 
 const styles = StyleSheet.create({
     footer: {
-        height: 60,
+        height: 52,
         flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',
+        marginTop: theme.marginTop,
         marginLeft: theme.marginLeft,
     },
     btn: {
-        height: 36,
+        height: 40,
         flex: 1,
         backgroundColor: '#F9F9F9',
         flexDirection: 'row',

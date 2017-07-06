@@ -1,7 +1,9 @@
 import React, { PureComponent } from 'react';
-import { InteractionManager, Text, View, StyleSheet, Image, ScrollView, TouchableOpacity, FlatList } from 'react-native';
+import {
+    InteractionManager, Text, View, StyleSheet, Image, ScrollView, TouchableOpacity, FlatList,
+} from 'react-native';
 import Entypo from 'react-native-vector-icons/Entypo';
-import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import SplitView from '../widget/SplitView';
 import ArrowLeft from '../widget/ArrowLeft';
 import theme from '../style/theme';
@@ -11,6 +13,7 @@ import screen from '../common/screen';
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        backgroundColor: theme.blankBgColor,
     },
     header: {
         height: 40,
@@ -56,6 +59,7 @@ const styles = StyleSheet.create({
     itemIcon: {
         flexDirection: 'row',
         width: 26,
+        marginLeft: 28,
     },
     icon: {
         alignSelf: 'center',
@@ -124,7 +128,7 @@ class ListItem extends PureComponent {
                             <Text style={styles.title}>{this.props.title}</Text>
                         </View>
                         <View style={styles.numLine} >
-                            <FontAwesome name="list-ol" size={fontSize} color={color} />
+                            <MaterialIcons name="format-list-numbered" size={fontSize} color={color} />
                             <Text style={{ color, fontSize, marginLeft: textMarginIcon }}>{this.props.num}</Text>
                         </View>
                     </View>
@@ -176,7 +180,7 @@ export default class extends PureComponent {
             },
             {
                 image: require('../image/contract_dayonghu.png'),
-                title: '广东电力大用户与发电企业购电合同',
+                title: '广东电大用户与发电企业购电合同',
                 num: '10001210',
             },
             {

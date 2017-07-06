@@ -8,11 +8,14 @@ import EmptyIcon from '../widget/EmptyIcon';
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        backgroundColor: theme.blankBgColor,
     },
     header: {
         height: 30,
         textAlignVertical: 'center',
         marginLeft: theme.marginLeft,
+        fontSize: 14,
+        color: '#8d8d8d',
     },
     list: {
         flexDirection: 'row',
@@ -28,7 +31,8 @@ const styles = StyleSheet.create({
         marginRight: theme.marginRight,
         width: 30,
         height: 30,
-        borderRadius: 4,
+        fontSize: 15,
+        borderRadius: 2,
         color: '#fff',
         textAlign: 'center',
         textAlignVertical: 'center',
@@ -76,16 +80,14 @@ class ListItem extends PureComponent {
         const index = this.props.index;
         const bgColor = colors[index % colors.length];
         return (
-            <TouchableOpacity activeOpacity={theme.activeOpacity} onPressIn={this.props.onPress}>
-                <View style={styles.list}>
-                    <Text style={[styles.icon, { backgroundColor: bgColor }]}>{world}</Text>
-                    <Text style={styles.name}>{item.name}</Text>
-                    <View style={styles.numView}>
-                        <Text style={styles.num}>{item.num}</Text>
-                        <Text style={styles.unit}>兆瓦时</Text>
-                    </View>
+            <View style={styles.list}>
+                <Text style={[styles.icon, { backgroundColor: bgColor }]}>{world}</Text>
+                <Text style={styles.name}>{item.name}</Text>
+                <View style={styles.numView}>
+                    <Text style={styles.num}>{item.num}</Text>
+                    <Text style={styles.unit}>兆瓦时</Text>
                 </View>
-            </TouchableOpacity>
+            </View>
         );
     }
 }
