@@ -5,7 +5,7 @@ import theme from '../style/theme';
 
 const styles = StyleSheet.create({
     container: {
-        height: 35,
+        height: 40,
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-between',

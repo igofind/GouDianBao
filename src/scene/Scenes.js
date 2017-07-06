@@ -20,6 +20,7 @@ import DealList from '../page/DealList';
 import ElecDeclare from '../page/ElecDeclare';
 import ContractDetail from '../page/ContractDetail';
 import DealAndElec from '../page/DealAndElec';
+import TradeAnalysis from "../page/TradeAnalysis";
 
 const TabScenes = TabNavigator({
     Home: {
@@ -117,8 +118,11 @@ const StackScenes = StackNavigator({
     DealAndElec: {
         screen: DealAndElec,
     },
+    TradeAnalysis: {
+        screen: TradeAnalysis,
+    },
 }, {
-    initialRouteName: 'Login',
+    initialRouteName: 'TradeAnalysis',
     headerMode: 'float',
     transitionConfig: () => ({
         screenInterpolator: CardStackStyleInterpolator.forHorizontal,

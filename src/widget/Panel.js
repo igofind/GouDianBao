@@ -12,7 +12,7 @@ const styles = StyleSheet.create({
 export default class extends PureComponent {
     render() {
         return (
-            <View style={styles.container} >
+            <View style={[styles.container, this.props.style]} >
                 <PanelTitle {...this.props} onPress={this.props.onPressDetail} />
                 {this.props.children}
             </View>

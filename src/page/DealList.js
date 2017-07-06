@@ -60,10 +60,10 @@ class ListItem extends PureComponent {
             <View style={styles.listItem}>
                 <Text style={styles.month}>{item.month}</Text>
                 <View style={styles.tools}>
-                    <TouchableOpacity activeOpacity={0.6} onPressIn={this.props.onAnnoPoress}>
+                    <TouchableOpacity activeOpacity={0.6} onPressIn={this.props.onAnnoPress}>
                         <Text style={styles.btn}> 交易公告 </Text>
                     </TouchableOpacity>
-                    <TouchableOpacity activeOpacity={0.6} onPressIn={this.props.onAnalPoress}>
+                    <TouchableOpacity activeOpacity={0.6} onPressIn={this.props.onAnalPress}>
                         <Text style={styles.btn}> 交易分析 </Text>
                     </TouchableOpacity>
                 </View>
@@ -93,6 +93,13 @@ export default class extends PureComponent {
         InteractionManager.runAfterInteractions(() => this.fetchData());
     }
 
+    onAnalPress() {
+        const { navigate } = this.props.navigation;
+        InteractionManager.runAfterInteractions(() => {
+            navigate('TradeAnalysis');
+        });
+    }
+
     fetchData() {
         this.setState({
             list,
@@ -105,7 +112,7 @@ export default class extends PureComponent {
             <View style={styles.container}>
                 <FlatList
                     removeClippedSubviews={false}
-                    renderItem={({ item }) => <ListItem item={item} />}
+                    renderItem={({ item }) => <ListItem item={item} onAnalPress={() => this.onAnalPress()} />}
                     keyExtractor={item => item.guid}
                     ListHeaderComponent={<SearchBar title="搜索" />}
                     data={data}

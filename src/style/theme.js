@@ -8,7 +8,7 @@ const headerTitleStyle = {
 
 const navHeaderStyle = {
     elevation: 0,
-    height: 46 + StatusBar.currentHeight, // StatusBar 背景为黑色时，StackNavigator弹出的screen顶部，在过渡动画结束是会有一条白线闪过，
+    height: 48 + StatusBar.currentHeight, // StatusBar 背景为黑色时，StackNavigator弹出的screen顶部，在过渡动画结束是会有一条白线闪过，
     paddingTop: StatusBar.currentHeight,  // 利用StatusBar translucent=true, 使导航头置于StatusBar 之下，再用paddingTop调整样式
     backgroundColor: '#fff',
 };
