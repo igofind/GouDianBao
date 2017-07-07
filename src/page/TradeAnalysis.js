@@ -375,7 +375,6 @@ export default class extends PureComponent {
     });
 
     render() {
-        StatusBar.setTranslucent(true);
         return (
             <View style={styles.container} >
                 <Panel detailLink={false} title="用度直接交易成交情况" style={styles.panel}>

@@ -21,6 +21,7 @@ import ElecDeclare from '../page/ElecDeclare';
 import ContractDetail from '../page/ContractDetail';
 import DealAndElec from '../page/DealAndElec';
 import TradeAnalysis from "../page/TradeAnalysis";
+import NotificationCenter from "../page/NotificationCenter";
 
 const TabScenes = TabNavigator({
     Home: {
@@ -121,8 +122,11 @@ const StackScenes = StackNavigator({
     TradeAnalysis: {
         screen: TradeAnalysis,
     },
+    NotificationCenter: {
+        screen: NotificationCenter,
+    },
 }, {
-    initialRouteName: 'Login',
+    initialRouteName: 'NotificationCenter',
     headerMode: 'float',
     transitionConfig: () => ({
         screenInterpolator: CardStackStyleInterpolator.forHorizontal,

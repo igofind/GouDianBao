@@ -8,7 +8,7 @@ const color = '#C8C8C8';
 
 const styles = StyleSheet.create({
     container: {
-        height: 25,
+        height: 24,
         marginLeft: theme.marginLeft,
         marginRight: theme.marginRight,
         marginTop: 10,
@@ -18,12 +18,12 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         backgroundColor: '#fff',
         borderRadius: 4,
-        borderColor: theme.listBorderColor,
-        borderWidth: screen.twoPixel,
+        borderColor: color,
+        borderWidth: screen.onePixel,
     },
     text: {
-        fontSize: 14,
-        marginLeft: 6,
+        fontSize: 12,
+        marginLeft: 4,
         textAlignVertical: 'center',
         textAlign: 'center',
         color,
