@@ -20,8 +20,8 @@ import DealList from '../page/DealList';
 import ElecDeclare from '../page/ElecDeclare';
 import ContractDetail from '../page/ContractDetail';
 import DealAndElec from '../page/DealAndElec';
-import TradeAnalysis from "../page/TradeAnalysis";
-import NotificationCenter from "../page/NotificationCenter";
+import TradeAnalysis from '../page/TradeAnalysis';
+import NotificationCenter from '../page/NotificationCenter';
 
 const TabScenes = TabNavigator({
     Home: {
@@ -41,7 +41,7 @@ const TabScenes = TabNavigator({
     },
     Calc: {
         screen: CalcScene,
-        navigationOptions: {
+        navigationOptions: ({ navigation }) => ({
             statusBarStyle: 'light-content',
             headerStyle: theme.styles.calcHeaderStyle,
             headerTitle: '辅助计算',
@@ -50,8 +50,8 @@ const TabScenes = TabNavigator({
             tabBarIcon: ({ tintColor }) =>
                 (<FontAwesome name="calculator" size={theme.tabIconSize} color={tintColor} />),
             headerLeft: <EmptyIcon />,
-            headerRight: <Bell onPress={() => { }} />,
-        },
+            headerRight: <Bell onPress={() => { navigation.navigate('NotificationCenter'); }} />,
+        }),
     },
     Mine: {
         screen: MineScene,
@@ -126,7 +126,7 @@ const StackScenes = StackNavigator({
         screen: NotificationCenter,
     },
 }, {
-    initialRouteName: 'NotificationCenter',
+    initialRouteName: 'Login',
     headerMode: 'float',
     transitionConfig: () => ({
         screenInterpolator: CardStackStyleInterpolator.forHorizontal,

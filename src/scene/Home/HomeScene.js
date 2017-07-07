@@ -330,15 +330,15 @@ const chartsOpts = {
 
 class HomeScene extends PureComponent {
 
-    static navigationOptions = {
+    static navigationOptions = ({ navigation }) => ({
         headerStyle: theme.styles.homeHeaderStyle,
         headerTitle: '首页',
         headerTitleStyle: theme.styles.homeHeaderTitleStyle,
         tabBarLabel: '首页',
         tabBarIcon: ({ tintColor }) => (<SimpleLineIcons name="home" size={theme.tabIconSize} color={tintColor} />),
         headerLeft: <EmptyIcon />,
-        headerRight: <Bell onPress={() => { }} />,
-    };
+        headerRight: <Bell onPress={() => { navigation.navigate('NotificationCenter'); }} />,
+    });
 
     constructor() {
         super();

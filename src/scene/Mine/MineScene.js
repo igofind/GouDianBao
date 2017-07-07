@@ -36,14 +36,14 @@ const styles = StyleSheet.create({
 
 class MineScene extends PureComponent {
 
-    static navigationOptions = {
+    static navigationOptions = ({ navigation }) => ({
         headerStyle: theme.styles.mineHeaderStyle,
         headerLeft: <EmptyIcon />,
         // headerRight: <Bell onPress={() => { }} style={{ justifyContent: 'flex-end' }} />,
-        headerRight: <Bell onPress={() => { }} />,
+        headerRight: <Bell onPress={() => { navigation.navigate('NotificationCenter'); }} />,
         tabBarLabel: '我的',
         tabBarIcon: ({ tintColor }) => (<FontAwesome name="user-o" size={theme.tabIconSize} color={tintColor} />),
-    };
+    });
 
     navigate(...args) {
         InteractionManager.runAfterInteractions(() => this.props.navigation.navigate(...args));

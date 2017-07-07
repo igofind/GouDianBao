@@ -6,7 +6,7 @@ import HeaderIcon from './HeaderIcon';
 export default class extends PureComponent {
     render() {
         return (
-            <HeaderIcon onPress={() => this.props.onPress()} style={this.props.style}>
+            <HeaderIcon onPress={this.props.onPress} style={this.props.style}>
                 <FontAwesome
                     name="bell-o"
                     size={theme.headerIconSize}
