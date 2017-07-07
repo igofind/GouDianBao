@@ -6,7 +6,7 @@ const styles = StyleSheet.create({
     container: {
         flexDirection: 'row',
         backgroundColor: '#fff',
-        height: 110,
+        height: 108,
         borderBottomWidth: screen.onePixel,
         borderBottomColor: '#e6e6e6',
     },
@@ -20,12 +20,12 @@ const styles = StyleSheet.create({
     desc: {
         flex: 1,
         flexDirection: 'column',
-        paddingTop: 15,
+        paddingTop: 19,
         paddingBottom: 15,
     },
     header: {
         flex: 1,
-        fontSize: 15,
+        fontSize: 14,
         textAlignVertical: 'center',
         color: '#3a3a3a',
     },

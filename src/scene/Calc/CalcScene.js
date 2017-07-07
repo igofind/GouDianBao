@@ -6,9 +6,8 @@ import theme from '../../style/theme';
 
 const styles = StyleSheet.create({
     container: {
-        // backgroundColor: theme.containerBC,
         flex: 1,
-        backgroundColor: theme.backgroundColor,
+        backgroundColor: theme.blankBgColor,
     },
 });
 const items = [
