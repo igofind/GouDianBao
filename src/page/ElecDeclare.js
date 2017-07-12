@@ -1,12 +1,12 @@
 import React, { PureComponent } from 'react';
 import { StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
-import theme from '../style/theme';
 import screen from '../common/screen';
+import theme from '../style/theme';
 import ArrowLeft from '../widget/ArrowLeft';
 import HeaderBtn from '../widget/HeaderBtn';
-import SplitView from '../widget/SplitView';
 import PickerCell from '../widget/PickerCell';
 import SplitLine from '../widget/SplitLine';
+import SplitView from '../widget/SplitView';
 
 const styles = StyleSheet.create({
     container: {
@@ -135,13 +135,25 @@ export default class extends PureComponent {
         />,
     });
 
+    constructor() {
+        super();
+        this.tradeTypes = ['保底分成', '分成', '一口价'];
+    }
+
     render() {
         const { navigate } = this.props.navigation;
         return (
             <View style={styles.container} >
                 <SplitView style={{ height: 12 }} />
-                <PickerCell label="申报月份" value="2017-06" />
-                <PickerCell label="交易种类" value="代理合同" />
+                <PickerCell
+                    label="申报月份"
+                    editable={true}
+                    value="2017-06"
+                    pickerType="date"
+                    datePickerMode="ym"
+                    title=""
+                />
+                <PickerCell label="交易种类" editable={true} value="代理合同" data={this.tradeTypes} />
                 <View style={styles.elecLine}>
                     <Text style={styles.elecLabel} >申报电量</Text>
                     <TextInput style={styles.input} value="23456" underlineColorAndroid="transparent" />
