@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, ToastAndroid } from 'react-native';
+import JPushModule from 'jpush-react-native';
 import theme from '../../style/theme';
 
 const styles = StyleSheet.create({
@@ -10,6 +11,16 @@ const styles = StyleSheet.create({
 });
 
 class BusinessScene extends PureComponent {
+
+    componentDidMount() {
+        console.log('1');
+
+        JPushModule.addReceiveNotificationListener((map) => {
+            console.log(`alertContent: ${map.alertContent}`);
+            console.log(`extras: ${map.extras}`);
+        });
+    }
+
     render() {
         return (
             <View style={styles.container}>

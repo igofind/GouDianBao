@@ -3,6 +3,7 @@ package com.goudianbao;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import cn.jpush.reactnativejpush.JPushPackage;
 import com.github.wuxudong.rncharts.MPAndroidChartPackage;
 import io.rnkit.actionsheetpicker.ASPickerViewPackage;
 import com.cboy.rn.splashscreen.SplashScreenReactPackage;
@@ -16,6 +17,9 @@ import java.util.List;
 
 public class MainApplication extends Application implements ReactApplication {
 
+    private boolean SHUTDOWN_TOAST = false;
+    private boolean SHUTDOWN_LOG = false;
+
   private final ReactNativeHost mReactNativeHost = new ReactNativeHost(this) {
     @Override
     public boolean getUseDeveloperSupport() {
@@ -25,10 +29,11 @@ public class MainApplication extends Application implements ReactApplication {
     @Override
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
-          new MainReactPackage(),
-            new ASPickerViewPackage(),
-            new MPAndroidChartPackage(),
-            new SplashScreenReactPackage()
+        new MainReactPackage(),
+        new JPushPackage(SHUTDOWN_TOAST, SHUTDOWN_LOG),
+        new ASPickerViewPackage(),
+        new MPAndroidChartPackage(),
+        new SplashScreenReactPackage()
       );
     }
   };

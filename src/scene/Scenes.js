@@ -126,7 +126,7 @@ const StackScenes = StackNavigator({
         screen: NotificationCenter,
     },
 }, {
-    initialRouteName: 'ElecDeclare',
+    initialRouteName: 'Login',
     headerMode: 'float',
     transitionConfig: () => ({
         screenInterpolator: CardStackStyleInterpolator.forHorizontal,

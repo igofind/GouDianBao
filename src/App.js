@@ -1,5 +1,6 @@
+import JPushModule from 'jpush-react-native';
 import React, { PureComponent } from 'react';
-import { Platform, BackHandler, ToastAndroid } from 'react-native';
+import { BackHandler, Platform, ToastAndroid } from 'react-native';
 import SplashScreen from 'react-native-splash-screen';
 import StackScenes from './scene/Scenes';
 
@@ -13,6 +14,9 @@ export default class extends PureComponent {
     }
 
     componentDidMount() {
+        // JPush推送
+        JPushModule.initPush();
+
         // do stuff while splash screen is shown
         // After having done stuff (such as async tasks) hide the splash screen
         SplashScreen.hide();
