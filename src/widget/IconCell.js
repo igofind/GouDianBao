@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
 export default class extends PureComponent {
     render() {
         return (
-            <TouchableOpacity activeOpacity={theme.activeOpacity} onPressIn={this.props.onPress}>
+            <TouchableOpacity activeOpacity={theme.activeOpacity} onPress={this.props.onPress}>
                 <View style={styles.container} >
                     <View style={styles.imageView} >
                         <Image source={this.props.image} style={{ width: 25, height: 25 }} />

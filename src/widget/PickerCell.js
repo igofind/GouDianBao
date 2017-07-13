@@ -1,4 +1,3 @@
-import moment from 'moment';
 import React, { Component } from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import Entypo from 'react-native-vector-icons/Entypo';
@@ -45,6 +44,7 @@ export default class extends Component {
     static defaultProps = {
         data: ['Nothing'],
         level: 1,
+        editable: false,
     };
 
     constructor() {
@@ -52,7 +52,6 @@ export default class extends Component {
         this.state = {
             value: [],
         };
-        this.isFirstRender = true;
         this.pickerProps = {
             centerTextColor: '#00aaee',
             outTextColor: '#8d8d8d',
@@ -64,7 +63,8 @@ export default class extends Component {
     }
 
     componentWillMount() {
-        this.editable = this.props.editable;
+        this.state.value = [this.props.value];
+
         this.pickerProps.numberOfComponents = this.props.level;
         this.pickerProps.titleText = this.props.title;
         this.pickerProps.isCenterLable = true;
@@ -74,85 +74,70 @@ export default class extends Component {
         }
     }
 
-    shouldComponentUpdate(nextProps, nextState) {
-        if (nextProps.editable !== this.editable || this.state.value !== nextProps.value) {
-            if (nextProps.editable !== this.editable) {
-                this.editable = nextProps.editable;
-            }
-            if (this.state.value !== nextProps.value && this.state.value === null) {
-                this.state.value = nextProps.value;
-            }
-            return true;
-        }
-
-        return false;
+    shouldComponentUpdate(nextProps) {
+        this.state.value = [nextProps.value];
+        return true;
     }
 
     isDatePicker() {
         return this.props.pickerType === 'date';
     }
-    showDataPicker(selectValue) {
+    showDataPicker() {
         DataPicker.show({
             dataSource: [...this.props.data],
-            defaultSelected: selectValue,
+            defaultSelected: this.state.value,
             ...this.pickerProps,
-            onPickerConfirm: (selectedData, selectedIndex) => {
+            onPickerConfirm: (selectedData) => {
                 this.setState({
-                    value: selectedData,
+                    value: [...selectedData],
                 });
                 // TODO 触发确认事件，回调给父组件传值
             },
             onPickerCancel: () => {
             },
-            onPickerDidSelect: (selectedData, selectedIndex) => {
-                // TODO ios
+            onPickerDidSelect: (selectedData) => {
+                this.setState({
+                    value: [...selectedData],
+                });
             },
         });
     }
 
-    showDatePicker(selectValue) {
+    showDatePicker() {
         DatePicker.show({
-            selectedDate: selectValue,
+            selectedDate: this.state.value.join(''),
             ...this.pickerProps,
-            onPickerConfirm: (selectedData, selectedIndex) => {
+            onPickerConfirm: (selectedData) => {
                 this.setState({
-                    value: selectedData,
+                    value: [selectedData],
                 });
                 // TODO 触发确认事件，回调给父组件传值
             },
             onPickerCancel: () => {
             },
             onPickerDidSelect: (selectedData, selectedIndex) => {
-                // TODO ios
+                this.setState({
+                    value: [selectedData],
+                });
             },
         });
     }
 
-    showPicker(selectValue) {
+    showPicker() {
         if (this.isDatePicker()) {
-            this.showDatePicker(selectValue);
+            this.showDatePicker();
         } else {
-            this.showDataPicker(selectValue);
+            this.showDataPicker();
         }
     }
 
     render() {
-        let value = this.state.value;
-        if (this.isFirstRender) {
-            if (this.props.value) {
-                if (this.isDatePicker()) {
-                    value = this.props.value;
-                } else {
-                    value = [this.props.value];
-                }
-            }
-            this.isFirstRender = false;
-        }
-        const activeOpacity = this.editable ? theme.activeOpacity : 1;
+        const value = this.state.value;
+        const activeOpacity = this.props.editable ? theme.activeOpacity : 1;
         return (
             <TouchableOpacity
                 activeOpacity={activeOpacity}
-                onPressIn={() => this.editable && this.showPicker(value)}
+                onPressIn={() => this.props.editable && this.showPicker()}
             >
                 <View style={styles.container}>
                     <Text style={styles.label}>{this.props.label}</Text>

@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import { InteractionManager, Text, View, StyleSheet, Image } from 'react-native';
+import { InteractionManager, Text, View, StyleSheet, Image, Share } from 'react-native';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import IconCell from '../../widget/IconCell';
 import SplitView from '../../widget/SplitView';
@@ -46,6 +46,10 @@ class MineScene extends PureComponent {
     });
 
     navigate(...args) {
+        this.props.navigation.navigate(...args);
+    }
+
+    navigate2(...args) {
         InteractionManager.runAfterInteractions(() => this.props.navigation.navigate(...args));
     }
 
@@ -101,7 +105,17 @@ class MineScene extends PureComponent {
                 </IconCell>
                 <SplitView style={{ height: 12 }} />
                 <IconCell
-                    onPress={() => {}}
+                    onPress={() => {
+                        Share.share(
+                            {
+                                title: '中恒博瑞售电门户',
+                                message: 'http://em.joinbright.com:8088/f1/emportal/webViews/index.html',
+                            },
+                            {
+                                dialogTitle: 'DialogTitle ? What ?',
+                            },
+                        );
+                    }}
                     image={require('../../image/mine_share.png')}
 
                 >

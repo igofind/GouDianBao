@@ -141,7 +141,7 @@ export default class extends PureComponent {
     }
 
     componentDidMount() {
-        InteractionManager.runAfterInteractions(() => this.fetchData());
+        this.fetchData();
     }
 
     fetchData() {
@@ -150,7 +150,7 @@ export default class extends PureComponent {
             qyfr: '周庆捷',
             qyxz: '高新技术',
             qydz: '西二旗大街领袖新硅谷',
-            zcdz: '海淀区分局',
+            zcdz: '海淀分局',
             swdjh: '123456789',
             yxhm: '高新技术',
             yxxth: '3456789',

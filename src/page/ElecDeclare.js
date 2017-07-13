@@ -110,11 +110,23 @@ class RefLine extends PureComponent {
             <View style={styles.refLine}>
                 <Text style={[styles.refLineTextLeft, { textAlign: 'right' }]}>{this.props.left}</Text>
                 <View style={{ flex: 7 }}>
-                    <View >
-                        <Text style={[styles.refLineTextRight, this.props.underline && styles.refLineUnderLine]}>
-                            {this.props.right}
-                        </Text>
-                    </View>
+                    {
+                        this.props.onPress
+                            ? <TouchableOpacity
+                                activeOpacity={theme.activeOpacity}
+                                onPress={this.props.onPress}
+                            >
+                                <Text style={
+                                    [styles.refLineTextRight, this.props.underline && styles.refLineUnderLine]}
+                                >
+                                    {this.props.right}
+                                </Text>
+                            </TouchableOpacity>
+                            : <Text style={[styles.refLineTextRight, this.props.underline && styles.refLineUnderLine]}>
+                                {this.props.right}
+                            </Text>
+
+                    }
                 </View>
             </View>
         );
@@ -153,7 +165,7 @@ export default class extends PureComponent {
                     datePickerMode="ym"
                     title=""
                 />
-                <PickerCell label="交易种类" editable={true} value="代理合同" data={this.tradeTypes} />
+                <PickerCell label="交易种类" editable={true} value="保底分成" data={this.tradeTypes} />
                 <View style={styles.elecLine}>
                     <Text style={styles.elecLabel} >申报电量</Text>
                     <TextInput style={styles.input} value="23456" underlineColorAndroid="transparent" />
@@ -176,9 +188,12 @@ export default class extends PureComponent {
                 <RefLine left="" right="执行电量xxxx兆瓦时" />
                 <RefLine left="" right="超欠电量xxxx兆瓦时" />
                 <RefLine left="7月年度分解电量:" right="xxxx兆瓦时" />
-                <TouchableOpacity activeOpacity={theme.activeOpacity} onPressIn={() => { navigate('Announcement'); }} >
-                    <RefLine left="7月交易告:" right="2017年7月月度电力直接交易公告" underline={true} />
-                </TouchableOpacity>
+                <RefLine
+                    left="7月交易告:"
+                    right="2017年7月月度电力直接交易公告"
+                    underline={true}
+                    onPress={() => { navigate('Announcement'); }}
+                />
             </View>
         );
     }
