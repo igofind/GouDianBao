@@ -1,6 +1,5 @@
 import React, { PureComponent } from 'react';
 import { InteractionManager, processColor, ScrollView, StatusBar, StyleSheet, View } from 'react-native';
-import { BarChart } from 'react-native-charts-wrapper';
 import SimpleLineIcons from 'react-native-vector-icons/Octicons';
 import Echarts from '../../echarts/index';
 import theme from '../../style/theme';
@@ -288,46 +287,6 @@ const echartsOptions = [
 const BLUE = processColor('#00AAEE');
 const GREEN = processColor('#47CFA0');
 
-const chartsOpts = {
-    chartDescription: {
-        text: '兆瓦时',
-        positionX: 60,
-        positionY: 23,
-        textSize: 6,
-        textColor: processColor('#8d8d8d'),
-    },
-    legend: {
-        enabled: true,
-        position: 'BELOW_CHART_CENTER',
-        textSize: 8,
-        textColor: processColor('#8d8d8d'),
-        formSize: 6,
-        xEntrySpace: 40,
-        wordWrapEnabled: false,
-    },
-    xAxis: {
-        enabled: false,
-    },
-    yAxis: {
-        left: {
-            drawLabels: true,
-            drawAxisLine: true,
-            drawGridLines: false,
-            axisMinimum: 0,
-            zeroLine: {
-                enabled: true,
-                lineWidth: 0.5,
-            },
-            spaceTop: 10,
-            textSize: 8,
-            textColor: processColor('#8d8d8d'),
-        },
-        right: {
-            enabled: false,
-        },
-    },
-};
-
 class HomeScene extends PureComponent {
 
     static navigationOptions = ({ navigation }) => ({
@@ -585,23 +544,6 @@ class HomeScene extends PureComponent {
                 <View style={styles.cards} >
                     {this.renderCards()}
                 </View>
-                {/* <SplitView style={{ height: 12 }} />
-                <Panel title="年度执行情况" onPressDetail={() => this.navigate('DealAndElec')} >
-                    <View style={styles.barCharContainer}>
-                        <BarChart
-                            animation={{ durationX: 300, durationY: 300 }}
-                            style={{ flex: 1 }}
-                            touchEnabled={false}
-                            scaleEnabled={false}
-                            chartDescription={chartsOpts.chartDescription}
-                            data={this.state.barChartData}
-                            xAxis={chartsOpts.xAxis}
-                            yAxis={chartsOpts.yAxis}
-                            legend={chartsOpts.legend}
-                        />
-                    </View>
-                    <PanelFooter llabel="考核费用" rlabel="利润" khfy="1085" lr="3085" />
-                </Panel>*/}
                 <SplitView style={{ height: 12 }} />
                 <Panel title="年度执行情况" onPressDetail={() => this.navigate('DealAndElec')} style={styles.panel}>
                     <View style={styles.barCharContainer}>

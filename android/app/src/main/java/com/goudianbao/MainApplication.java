@@ -4,7 +4,6 @@ import android.app.Application;
 
 import com.facebook.react.ReactApplication;
 import cn.jpush.reactnativejpush.JPushPackage;
-import com.github.wuxudong.rncharts.MPAndroidChartPackage;
 import io.rnkit.actionsheetpicker.ASPickerViewPackage;
 import com.cboy.rn.splashscreen.SplashScreenReactPackage;
 import com.facebook.react.ReactNativeHost;
@@ -32,7 +31,6 @@ public class MainApplication extends Application implements ReactApplication {
         new MainReactPackage(),
         new JPushPackage(SHUTDOWN_TOAST, SHUTDOWN_LOG),
         new ASPickerViewPackage(),
-        new MPAndroidChartPackage(),
         new SplashScreenReactPackage()
       );
     }
