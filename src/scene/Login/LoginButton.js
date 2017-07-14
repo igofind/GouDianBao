@@ -5,10 +5,7 @@ import theme from '../../style/theme';
 const styles = StyleSheet.create({
     button: {
         backgroundColor: theme.blue,
-        borderTopLeftRadius: 5,
-        borderTopRightRadius: 5,
-        borderBottomLeftRadius: 5,
-        borderBottomRightRadius: 5,
+        borderRadius: 5,
         height: 40,
         marginLeft: theme.marginLeft,
         marginRight: theme.marginLeft,

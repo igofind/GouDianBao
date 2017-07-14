@@ -68,16 +68,19 @@ const styles = StyleSheet.create({
         textAlign: 'right',
         marginRight: 5,
     },
-    btn: {
+    btnContainer: {
+        backgroundColor: theme.blue,
+        borderRadius: 5,
         height: 40,
         marginLeft: theme.marginLeft,
-        marginRight: theme.marginRight,
+        marginRight: theme.marginLeft,
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    btn: {
         color: '#fff',
         fontSize: 18,
-        textAlign: 'center',
-        backgroundColor: '#00AAEE',
-        textAlignVertical: 'center',
-        borderRadius: 5,
     },
     refLine: {
         height: 25,
@@ -177,7 +180,7 @@ export default class extends PureComponent {
                     <Text style={styles.unit}>万元</Text>
                 </View>
                 <SplitView />
-                <TouchableOpacity activeOpacity={theme.activeOpacity} onPressIn={() => {}}>
+                <TouchableOpacity activeOpacity={theme.activeOpacity} onPressIn={() => {}} style={styles.btnContainer}>
                     <Text style={styles.btn} >提交</Text>
                 </TouchableOpacity>
                 <SplitView style={{ height: 70 }} />
